@@ -18,6 +18,7 @@
 \newcommand*{\F}{\mathbf{F}}
 \newcommand*{\dx}{\dif{}x}
 \newcommand*{\dt}{\dif{}t}
+\newcommand*{\du}{\dif{}u}
 \newcommand*{\Ix}[1]{\int_{\R}{#1}\dx}
 \newcommand*{\It}[1]{\int_0^\infty{#1}\dt}
 \newcommand*{\IR}{\int_{\R^2}}
@@ -48,9 +49,52 @@
 
 \item
   \begin{enumerate}[label=\textbf{\alph*)}]
-    \item Der Beweis sollte wieder so funktionieren wie die RH-Bedingung.
-    \item Bsp. 1.11 durchführen mit $\eta, \psi$ allgemein?
+  \item
+    Damit $u$ eine Entropielösung ist, muss sie zunächst eine schwache Lösung
+    sein, also die RH-Bedingung erfüllen.
+    Zusätzlich:
+    \begin{IEEEeqnarray*}{Cl}
+      &\It{\Ix{\eta(u)\Phi_t + \psi(u)\Phi_x}} \\
+      =&\It{\left[\partial_t\int_{-\infty}^{st} \eta(u) \Psi \dx - s \eta(u_l) \Phi(st, t)
+        + \partial_t \int_{st}^\infty \eta(u) \Phi + s \eta(u_r) \Phi(st, t)\right]}\\
+      & + \It{\psi(u_l)\Phi(st,t) - \psi(u_r)\Phi(st,t)} \\
+      =& - \Ix{\eta(u_0) \Phi(x,0)} - \left(s (\eta(u_l) - \eta(u_r)) +
+        \psi(u_l) - \psi(u_r)\right) \It{\underbrace{\Phi(st, t)}_{\geq 0}} \\
+    \end{IEEEeqnarray*}
+    $u$ erfüllt also Entropiebedingung wenn der zweite Term negativ ist, was
+    äquivalent ist zu:
+    \[s(\eta(u_r) - \eta(u_l)) \geq \psi(u_r) - \psi(u_l)\]
+    für alle Entropie-Entropiefluss-Paare.
+
+    \item 
+      \[f(u) = \frac{u^2}{2} \Rightarrow f'(u) = u \Rightarrow \psi' = f' \eta'
+        = u \eta'\]
+
+      \[ s = \frac{u_l + u_r}{2} \Rightarrow s - u_r = \frac{u_l - u_r}{2}, \;
+        u_l - s = \frac{u_l - u_r}{2} \]
+
+      \begin{IEEEeqnarray*}{Cl}
+        &s(\eta(u_r) - \eta(u_l) + \psi(u_l) - \psi(u_r)) = \int_{u_l}^{u_r} s
+        \eta'(u) \dif{}u + \int_{u_r}^{u_l} \psi'(u) \du \\
+        =& \int_{u_r}^s (u-s) \eta'(u) \du + \int_s^{u_l} (u-s)\eta'(u) \du \\
+        =& \int_{0}^{s-u_r} -u \eta'(s-u) \du + \int_0^{u_l-s} u\eta'(s+u) \du \\
+        =& \int_0^{\frac{u_l-u_r}{2}} u (\eta'(s-u) + \eta'(s+u)) \du \geq 0
+      \end{IEEEeqnarray*}
+      Der letzte Schritt folgt weil $u>0$ in den Integrationsgrenzen und weil $\eta$ konvex ist.
+
     \item
+      Schwache Lösung wissen wir aus der Vorlesung mit $s = \frac{u_l+u_r}{2}$.
+      Setze in die Ungleichung von \textbf{a)} ein: $\eta(u) = u^2,
+      \psi' = f' \eta' = 2 u^2 \Rightarrow \psi(u) = \frac{2}{3} u^3$
+      \begin{IEEEeqnarray*}{rCl}
+      s (u_r^2 - u_l^2) = \frac{u_r^3 + u_lu_r^2 - u_ru_l^2 - u_l^3}{2} &\geq&
+      \frac{2(u_r^3 - u_l^3)}{3} \\
+      3u_r^3 + 3u_lu_r^2 - 3u_ru_l^2 - 3u_l^3 &\geq& 4(u_r^3 - u_l^3) \\
+      -u_r^3 + 3u_lu_r^2 - 3u_ru_l^2 + u_l^3 &\geq& 0 \\
+      (u_l - u_r)^3\geq 0 &\iff& u_l \geq u_r \\
+      \end{IEEEeqnarray}
+
+
   \end{enumerate}
 
 
@@ -92,7 +136,7 @@
     und so wird das Integral über $\Gamma_L$ sicher positiv.
     Mit $R \rightarrow \infty$ und $t_1 \rightarrow 0$ folgt dann die Behauptung.
 
-    Haben angenommen, das die rechte Seite der Entropiebedingung immer $0$ ist.
+    Haben angenommen, dass die rechte Seite der Entropiebedingung immer $0$ ist.
     Das ergibt sich aus der speziellen Wahl unserer Testfunktionen, die sind für
     $t_1 > 0$ immer $0$ in $t=0$.
     und mit richtiger Reihenfolge der Grenzwertbildung sollte das passen.
