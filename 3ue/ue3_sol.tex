@@ -15,10 +15,12 @@
 \usepackage{enumitem}
 
 \newcommand*{\R}{\mathbb{R}}
+\newcommand*{\F}{\mathbf{F}}
 \newcommand*{\dx}{\dif{}x}
 \newcommand*{\dt}{\dif{}t}
 \newcommand*{\Ix}[1]{\int_{\R}{#1}\dx}
 \newcommand*{\It}[1]{\int_0^\infty{#1}\dt}
+\newcommand*{\IR}{\int_{\R^2}}
 
 \begin{document}
 
@@ -29,18 +31,18 @@
 
   \[ \Ix{\It{-f(u) \Phi_x - u \Phi_t}} - \Ix{u_0 \Phi_0} = \Ix{\It{g(u) \Phi}} \]
 
-  Sei nun $u$ eine klassische Lösung mit Schock in $\psi(t)$.
+%   Sei nun $u$ eine klassische Lösung mit Schock in $\psi(t)$.
 
-  Wobei wie gewohnt $u_l(t) = \displaystyle{\lim_{x \nearrow \psi(t)} u(x, t)}$,
-  $u_r(t) = \displaystyle{\lim_{x \searrow \psi(t)} u(x, t)}$.
+%   Wobei wie gewohnt $u_l(t) = \displaystyle{\lim_{x \nearrow \psi(t)} u(x, t)}$,
+%   $u_r(t) = \displaystyle{\lim_{x \searrow \psi(t)} u(x, t)}$.
 
-  Führt man die Herleitung der RH-Bedingung wie im Skript durch, ergibt sich:
-  \begin{IEEEeqnarray*}{rCl}
-   \Ix{\It{g(u)\Phi}} & = & \Ix{\It{f(u)_x\Phi + u_t\Phi}} \\
-    & & + [\psi'(t)(u_l(t) - u_r(t)) - f(u_l(t) + f(u_r(t))] \It{\Phi(\psi(t), t)} \\
-  \end{IEEEeqnarray*}
-Damit sich alles auf $0$ ergibt, muss also wieder gelten:
-\[ \psi'(t) = \frac{f(u_l(t)) - f(u_r(t))}{u_l(t) - u_r(t)}\]
+%   Führt man die Herleitung der RH-Bedingung wie im Skript durch, ergibt sich:
+%   \begin{IEEEeqnarray*}{rCl}
+%    \Ix{\It{g(u)\Phi}} & = & \Ix{\It{f(u)_x\Phi + u_t\Phi}} \\
+%     & & + [\psi'(t)(u_l(t) - u_r(t)) - f(u_l(t) + f(u_r(t))] \It{\Phi(\psi(t), t)} \\
+%   \end{IEEEeqnarray*}
+% Damit sich alles auf $0$ ergibt, muss also wieder gelten:
+% \[ \psi'(t) = \frac{f(u_l(t)) - f(u_r(t))}{u_l(t) - u_r(t)}\]
 
 \item
 
@@ -58,9 +60,50 @@ Damit sich alles auf $0$ ergibt, muss also wieder gelten:
     \[ f(u) = \eta(u) = \frac{u^2}{2} \Rightarrow f'(u) = \eta'(u) = u\]
     \[\psi' = f' \eta' \Rightarrow \psi' = u^2 \Rightarrow \psi = \frac{u^3}{3} \]
 
+  \item
+    Start bei der Entropiebedingung (1.20):
+    \[ \It{\Ix{[\eta(u)\Phi_t + \psi(u)\Phi_x]}} \geq - \Ix{\eta(u_0(x))\Phi(x, 0)}\]
+    mit $\eta, \psi$ aus \textbf{a)}.
+
+    Analog zu den Kruzkov-notes nehmen wir:
+    \[ \F = \begin{pmatrix}\psi(u)\\ \eta(u)\end{pmatrix} =
+      \begin{pmatrix}
+        \frac{u^3}{3}\\\frac{u^2}{2}
+      \end{pmatrix}
+    \]
+    und als Testfunktion die Indikatorfunktion $\chi_K$,
+    wobei $K$ das Trapez mit den Eckpunkten
+    $(-R, t_1), (R, t_1), (R-M(t_2-t_1), t_2), (-R+M(t_2-t_1), t_2)$ ist.
+    \[\Gamma_L = \{(x,t) | t_1 < t < t_2, \, \abs{x} = R - M(t-t_1)\}\]
+
+    \begin{IEEEeqnarray*}{rCl}
+      0 &\leq& \IR \F \cdot \nabla_{x,t} \chi_K
+      = - \IR \nabla_{x,t}\cdot F\chi_K
+      = \int_K \nabla_{x,t} \cdot \F
+      = - \int_{\partial K} \F \cdot
+      \mathbf{n}_K \\
+      &=& - \left[\int_{\abs{x} \leq R - M(t_2 - t_1)} \frac{u^2(x, t_2)}{2} \dx -
+        \int_{\abs{x}\leq R} \frac{u^2(x, t_1)}{2} \dx
+        + \int_{\Gamma_L} \frac{u^3}{3} \frac{x}{\abs{x}} + M \frac{u^2}{2}
+      \right]
+    \end{IEEEeqnarray*}
+    Weil $u \in L^\infty$ wählen wir
+    \[ M \coloneqq \sup \frac{2\norm{u}_\infty}{3}\]
+    und so wird das Integral über $\Gamma_L$ sicher positiv.
+    Mit $R \rightarrow \infty$ und $t_1 \rightarrow 0$ folgt dann die Behauptung.
+
+    Haben angenommen, das die rechte Seite der Entropiebedingung immer $0$ ist.
+    Das ergibt sich aus der speziellen Wahl unserer Testfunktionen, die sind für
+    $t_1 > 0$ immer $0$ in $t=0$.
+    und mit richtiger Reihenfolge der Grenzwertbildung sollte das passen.
   \end{enumerate}
 
 \item
+  \begin{enumerate}[label=\arabic*.]
+  \item
+  \item
+  \item
+  \end{enumerate}
 
 \end{enumerate}
 
