@@ -10,22 +10,49 @@
 \usepackage{amssymb}
 \usepackage{commath}
 \usepackage{mathtools}
+\usepackage[retainorgcmds]{IEEEtrantools}
 
 \usepackage{enumitem}
 
 \newcommand*{\R}{\mathbb{R}}
+\newcommand*{\dx}{\dif{}x}
+\newcommand*{\dt}{\dif{}t}
+\newcommand*{\Ix}[1]{\int_{\R}{#1}\dx}
+\newcommand*{\It}[1]{\int_0^\infty{#1}\dt}
 
 \begin{document}
 
 \begin{enumerate}[label*=\textbf{3.\arabic*.}]
 
 \item
+  Die schwache Formulierung lautet:
+
+  \[ \Ix{\It{-f(u) \Phi_x - u \Phi_t}} - \Ix{u_0 \Phi_0} = \Ix{\It{g(u) \Phi}} \]
+
+  Sei nun $u$ eine klassische Lösung mit Schock in $\psi(t)$.
+
+  Wobei wie gewohnt $u_l(t) = \displaystyle{\lim_{x \nearrow \psi(t)} u(x, t)}$,
+  $u_r(t) = \displaystyle{\lim_{x \searrow \psi(t)} u(x, t)}$.
+
+  Führt man die Herleitung der RH-Bedingung wie im Skript durch, ergibt sich:
+  \begin{IEEEeqnarray*}{rCl}
+   \Ix{\It{g(u)\Phi}} & = & \Ix{\It{f(u)_x\Phi + u_t\Phi}} \\
+    & & + [\psi'(t)(u_l(t) - u_r(t)) - f(u_l(t) + f(u_r(t))] \It{\Phi(\psi(t), t)} \\
+  \end{IEEEeqnarray*}
+Damit sich alles auf $0$ ergibt, muss also wieder gelten:
+\[ \psi'(t) = \frac{f(u_l(t)) - f(u_r(t))}{u_l(t) - u_r(t)}\]
 
 \item
 
 \item
 
 \item
+  \begin{enumerate}[label=\textbf{\alph*)}]
+  \item
+    \[ f(u) = \eta(u) = \frac{u^2}{2} \Rightarrow f'(u) = \eta'(u) = u\]
+    \[\psi' = f' \eta' \Rightarrow \psi' = u^2 \Rightarrow \psi = \frac{u^3}{3} \]
+
+  \end{enumerate}
 
 \item
 
