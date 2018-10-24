@@ -32,18 +32,18 @@
 
   \[ \Ix{\It{-f(u) \Phi_x - u \Phi_t}} - \Ix{u_0 \Phi_0} = \Ix{\It{g(u) \Phi}} \]
 
-%   Sei nun $u$ eine klassische Lösung mit Schock in $\psi(t)$.
+  Sei nun $u$ eine klassische Lösung mit Schock in $\psi(t)$.
 
-%   Wobei wie gewohnt $u_l(t) = \displaystyle{\lim_{x \nearrow \psi(t)} u(x, t)}$,
-%   $u_r(t) = \displaystyle{\lim_{x \searrow \psi(t)} u(x, t)}$.
+  Wobei wie gewohnt $u_l(t) = \displaystyle{\lim_{x \nearrow \psi(t)} u(x, t)}$,
+  $u_r(t) = \displaystyle{\lim_{x \searrow \psi(t)} u(x, t)}$.
 
-%   Führt man die Herleitung der RH-Bedingung wie im Skript durch, ergibt sich:
-%   \begin{IEEEeqnarray*}{rCl}
-%    \Ix{\It{g(u)\Phi}} & = & \Ix{\It{f(u)_x\Phi + u_t\Phi}} \\
-%     & & + [\psi'(t)(u_l(t) - u_r(t)) - f(u_l(t) + f(u_r(t))] \It{\Phi(\psi(t), t)} \\
-%   \end{IEEEeqnarray*}
-% Damit sich alles auf $0$ ergibt, muss also wieder gelten:
-% \[ \psi'(t) = \frac{f(u_l(t)) - f(u_r(t))}{u_l(t) - u_r(t)}\]
+  Führt man die Herleitung der RH-Bedingung wie im Skript durch, ergibt sich:
+  \begin{IEEEeqnarray*}{rCl}
+   \Ix{\It{g(u)\Phi}} & = & \Ix{\It{f(u)_x\Phi + u_t\Phi}} \\
+    & & + [\psi'(t)(u_l(t) - u_r(t)) - f(u_l(t) + f(u_r(t))] \It{\Phi(\psi(t), t)} \\
+  \end{IEEEeqnarray*}
+Damit sich alles auf $0$ ergibt, muss also wieder gelten:
+\[ \psi'(t) = \frac{f(u_l(t)) - f(u_r(t))}{u_l(t) - u_r(t)}\]
 
 \item
 
@@ -66,7 +66,7 @@
     \[s(\eta(u_r) - \eta(u_l)) \geq \psi(u_r) - \psi(u_l)\]
     für alle Entropie-Entropiefluss-Paare.
 
-    \item 
+    \item
       \[f(u) = \frac{u^2}{2} \Rightarrow f'(u) = u \Rightarrow \psi' = f' \eta'
         = u \eta'\]
 
@@ -92,7 +92,7 @@
       3u_r^3 + 3u_lu_r^2 - 3u_ru_l^2 - 3u_l^3 &\geq& 4(u_r^3 - u_l^3) \\
       -u_r^3 + 3u_lu_r^2 - 3u_ru_l^2 + u_l^3 &\geq& 0 \\
       (u_l - u_r)^3\geq 0 &\iff& u_l \geq u_r \\
-      \end{IEEEeqnarray}
+      \end{IEEEeqnarray*}
 
 
   \end{enumerate}
@@ -138,14 +138,14 @@
 
     Haben angenommen, dass die rechte Seite der Entropiebedingung immer $0$ ist.
     Das ergibt sich aus der speziellen Wahl unserer Testfunktionen, die sind für
-    $t_1 > 0$ immer $0$ in $t=0$.
+    $t_1 > 0$ immer $0$ in $t=0$
     und mit richtiger Reihenfolge der Grenzwertbildung sollte das passen.
   \end{enumerate}
 
 \item
   \begin{enumerate}[label=\arabic*.]
   \item
-    Gilt eh für alle schwachen Lösungen.
+    Gilt für alle schwachen Lösungen.
   \item
     \[ \Phi(u) = \abs{u} + u \Rightarrow \Phi'(u) = \text{sgn}(u) + 1\]
     \[ \Psi' = \Phi' f' = f' (\text{sgn}(u) + 1) \Rightarrow \Psi = f(u)
