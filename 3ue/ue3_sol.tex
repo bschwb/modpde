@@ -14,16 +14,21 @@
 
 \usepackage{enumitem}
 
+\newcommand*{\eps}{\varepsilon}
 \newcommand*{\R}{\mathbb{R}}
 \newcommand*{\F}{\mathbf{F}}
 \newcommand*{\dx}{\dif{}x}
+\newcommand*{\dy}{\dif{}y}
 \newcommand*{\dt}{\dif{}t}
 \newcommand*{\du}{\dif{}u}
 \newcommand*{\Ix}[1]{\int_{\R}{#1}\dx}
+\newcommand*{\Iy}[1]{\int_{\R}{#1}\dy}
 \newcommand*{\It}[1]{\int_0^\infty{#1}\dt}
 \newcommand*{\IR}{\int_{\R^2}}
+\newcommand*{\Lam}{\Lambda_{(\eta,\psi)}}
 
 \begin{document}
+
 
 \begin{enumerate}[label*=\textbf{3.\arabic*.}]
 
@@ -46,10 +51,58 @@ Damit sich alles auf $0$ ergibt, muss also wieder gelten:
 \[ \psi'(t) = \frac{f(u_l(t)) - f(u_r(t))}{u_l(t) - u_r(t)}\]
 
 \item
-
-\item
   \begin{enumerate}[label=\textbf{\alph*)}]
   \item
+    \begin{itemize}
+    \item
+      \[ \varphi_\eps(x) = \varphi \ast \rho_\epsilon(x) =
+        \int_\R \varphi(x - y) \rho_\eps(y) \dy \geq 0 \]
+
+    \item Glattheit wird vom Mollifier vererbt, wenn $\varphi \in L^1(\R^2)$
+      Ableitung ins Faltungsintegral reinziehen und abschätzen.
+
+    \item
+      Sei $g\in L^\infty$ beliebig:
+
+      \begin{IEEEeqnarray*}{rCl}
+        \abs{\Ix{(\varphi-\varphi \ast \rho_\eps) g}} &=&
+        \abs{\Ix{\Iy{(\varphi(x)-\varphi(x-y)) \rho_\eps(y)} \; g(x)}} \\
+        &=& \abs{\Iy{\Ix{(\varphi(x)-\varphi(x-y)) g(x) } \; \rho_\eps(y)}} \\
+        &\leq& \Iy{\norm{\varphi - \tau_y \varphi}_{L^1} \norm{g}_{L^\infty}
+        \rho_\eps(y)} \\
+      &\leq& \sup_{\abs{y} \leq \eps} \norm{\varphi-\tau_y \varphi}_{L^1}\norm{g}_{L^\infty} \\
+      &\leq& \delta\norm{g}_{L^\infty} \quad \text{für $\delta(\eps)$}
+      \end{IEEEeqnarray*}
+
+      Daher ist $g \mapsto \Ix{\varphi - \varphi\ast\rho_\eps g}$ ein stetiges
+      lineares Funktional auf $L^\infty$ mit Norm $\leq \delta$.
+      Aus dem Darstellungssatz von Ritz folgt, dass $(\varphi - \varphi \ast \rho_\eps) \in
+      L^1$ und da laut Vorraussetzungen $\varphi \in \L^1$ folgt auch, dass
+      $\varphi \ast \rho_\eps \in \L^1$.
+      \[ \Rightarrow \norm{\varphi-\varphi\ast\rho_\eps}_{L^1} \rightarrow 0
+        \text{ für } \eps\rightarrow 0\]
+
+    \end{itemize}
+
+  \item
+    Schreibe $\varphi = \varphi^+ - \varphi^-$.
+    \[\Lam^+(\varphi_\eps^+) = \int u (\varphi^+_\epsilon)_t + f(u)
+      (\varphi^+_\eps)_x + \int u_0 \varphi_\epsilon^+ (\cdot, 0) \geq 0 \]
+    \[\Lam^-(\varphi_\eps^+) = \int -u (\varphi^+_\epsilon)_t + -f(u)
+      (\varphi^+_\eps)_x + \int -u_0 \varphi_\epsilon^+ (\cdot, 0)  = - \Lambda^+
+      (\varphi^+\eps) \geq 0 \]
+    \[ \Rightarrow \Lambda^+ = \Lambda^- = 0\]
+    \[ \Rightarrow 0 = \Lambda^+(\varphi_\eps^+ - \varphi_\epsilon^-)
+    = \It{\Ix{ u (\varphi_\eps)_t + f(u) (\varphi_\epsilon)_x}} + \Ix{u_0 \varphi_\epsilon}\]
+
+  Wenn $\varphi_\eps$ glatt genug ist gilt: $\varphi_\eps' = \varphi \ast \rho'_\epsilon = \varphi' \ast \rho_\epsilon$
+
+  Also mit $\eps \rightarrow 0$ is gezeigt, dass $\varphi$ eine schwache Lösung ist.
+  \end{enumerate}
+
+  \item
+  \begin{enumerate}[label=\textbf{\alph*)}]
+    \item
     Damit $u$ eine Entropielösung ist, muss sie zunächst eine schwache Lösung
     sein, also die RH-Bedingung erfüllen.
     Zusätzlich:
@@ -96,7 +149,6 @@ Damit sich alles auf $0$ ergibt, muss also wieder gelten:
 
 
   \end{enumerate}
-
 
 \item
   \begin{enumerate}[label=\textbf{\alph*)}]
