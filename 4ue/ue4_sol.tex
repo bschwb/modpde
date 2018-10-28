@@ -18,6 +18,23 @@
 
 \begin{enumerate}[label*=\textbf{4.\arabic*.}]
   \item
+    \[ f(u) = \frac{u^2}{u^2+(1-u)^2} \]
+    \begin{IEEEeqnarray*}{rCl}
+    f'(u) &=& \frac{2u (u^2 + (1-u)^2) - u^2 (2 u - 2(1-u))}{(u^2 + (1-u)^2)^2} \\
+    &=& \frac{2u^3 + 2u - 4u^2 + 2 u^3 - 2 u^3 + 2 u^2 - 2u^3}{(u^2 +
+      (1-u)^2)^2} \\
+    &=& \frac{-4u^2}{(u^2 + (1-u)^2)^2}
+    \end{IEEEeqnarray*}
+    \[ (f')^{-1}(\xi) = \frac{1}{2}\left( 1 - \sqrt{\frac{1}{\xi}\left( \sqrt{4\xi + 1}
+          - 1} - 1\right)} \right) \]
+    \[ u =
+      \begin{cases}
+        u_1 & x < f'(u_1)t\\
+        (f')^{-1}(\frac{x}{t}) & f'(u_1) t \leq x \leq f'(u_2) t\\
+        u_2 & f'(u_2) t < x < st  \\
+        u_3 & st < x \\
+      \end{cases}
+\]
   \item
   \item
   \item
