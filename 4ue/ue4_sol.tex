@@ -14,6 +14,9 @@
 
 \usepackage{enumitem}
 
+\newcommand*{\dx}{\dif{}x}
+\newcommand*{\ds}{\dif{}s}
+
 \begin{document}
 
 \begin{enumerate}[label*=\textbf{4.\arabic*.}]
@@ -35,7 +38,18 @@
         u_3 & st < x \\
       \end{cases}
 \]
+
   \item
+    \[v(x_1, x_2) = \begin{pmatrix}x_2\\x_1\end{pmatrix}\]
+
+  Stromlinien sind die Integralkurven vom Geschwindigkeitsfeld $v$, also die
+  Lösungen von $\frac{\dx}{\ds} = v(x;t)$ für eine feste Zeit $t$. Das gegeben
+  Geschwindigkeitsfeld ist stationär, daher sind Bahnlinien gegeben durch die Stromlinien.
+
+  Die Lösungen dieser DGL sind von der Form:
+  \[\begin{pmatrix}x_1\\x_2\end{pmatrix}(s) =
+    \begin{pmatrix}\sinh(s)+c_1\\\cosh(s)+c_2\end{pmatrix}\]
+
   \item
   \item
 \end{enumerate}
