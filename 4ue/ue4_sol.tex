@@ -22,6 +22,8 @@
 \newcommand*{\dx}{\dif{}x}
 \newcommand*{\ds}{\dif{}s}
 \newcommand*{\dt}{\dif{}t}
+\newcommand*{\dX}{\dif{}X}
+\newcommand*{\A}{\mathbf{A}}
 
 \begin{document}
 
@@ -69,7 +71,8 @@ Damit die Anfangsbedingungen erfüllt sind, muss also $u_1 = 0$ und $u_2 = 1$ se
 
   Stromlinien sind die Integralkurven vom Geschwindigkeitsfeld $v$, also die
   Lösungen von $\frac{\dx}{\ds} = v(x;t)$ für eine feste Zeit $t$. Das gegeben
-  Geschwindigkeitsfeld ist stationär, daher sind Bahnlinien gegeben durch die Stromlinien.
+  Geschwindigkeitsfeld ist stationär, also sind die DGL für Bahnlinien und
+  Stromlinien gleich.
 
   Die Lösungen dieser DGL sind von der Form:
   \[\begin{pmatrix}x_1\\x_2\end{pmatrix}(s) =
@@ -78,12 +81,13 @@ Damit die Anfangsbedingungen erfüllt sind, muss also $u_1 = 0$ und $u_2 = 1$ se
   \item
     \[\det(B + \eps C B) - \det(B) = \left[\det(I + \eps C) - 1\right] \det(B) \]
     Mit der Leibniz Formel für Determinanten erhalten wir:
+
     \begin{IEEEeqnarray*}{Cl}
     =&  \left[\prod^n_{i=1} (1 + \eps c_{ii}) + \Landau(\eps^2) -
       1\right] \det(B) = \left[1 + \eps \sum_{i=1}^n c_{ii} + \Landau(\eps^2) -
       1\right] \det(B) \\
     =&\eps \det(B) \spur(C) + \Landau(\eps^2)
-    \end{IEEEeqnarray}
+    \end{IEEEeqnarray*}
 
     Gleicher Beweis, wenn $B$ und $C$ vertauscht sind, deshalb
     \begin{IEEEeqnarray*}{rCl}
@@ -95,6 +99,20 @@ Damit die Anfangsbedingungen erfüllt sind, muss also $u_1 = 0$ und $u_2 = 1$ se
     mit wähle $C = A^{-1} A'$.
 
   \item
+    Partiell integrieren und dann Transformationssatz.
+    \[ \nabla_x \eta(t, x) = \nabla_X \bar{\eta}(X(t, x)) \cdot \A^{-1}(X(t, x)) \]
+    \[ \Rightarrow \nabla_x \eta(t, x) \cdot \A(X(t,x)) = \nabla_X \bar{\eta}(X(t, x)) \]
+    \begin{IEEEeqnarray*}{Cl}
+      &\int_\Omega \nabla_X \cdot (J(t, X) \A^{-T}(t, X)) \bar{\eta}(X)\dX \\
+      =&-\int_\Omega (J(t, X) \A^{-T}(t, X)) \cdot \nabla_X \bar{\eta}(X)\dX +
+      \underbrace{\int_{\partial\Omega} J(t, X) \A^{-T}  \bar{\eta}(t,s) \cdot
+        \dif{}S}_{= 0 \text{ weil } \bar{\eta} \in C^\infty_0(\Omega)} \\
+      =&-\int_{\Omega(t) = x(t, \Omega)} (J(t, X(t,x)) \A^{-T}(t, X(t,x))) \cdot \nabla_X
+      \bar{\eta}(X(t, x)) (\underbrace{\abs{\det{\Dif{}x}}}_{\det\A = J})^{-1}\dx \\
+      =&-\int_{\Omega(t)} (J(t, x) \A^{-T}(t, x)) \cdot \nabla_x
+      \eta(t, x) \cdot \A(t, x) (\underbrace{\abs{\det{\Dif{}x}}}_{\det\A = J})^{-1}\dx \\
+      =&-\int_{\Omega(t)} \nabla_x \eta(t, x) \dx = 0
+    \end{IEEEeqnarray*}
 
 \end{enumerate}
 
