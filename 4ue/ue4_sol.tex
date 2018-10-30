@@ -12,6 +12,7 @@
 \usepackage{mathtools}
 \usepackage[retainorgcmds]{IEEEtrantools}
 
+\usepackage{url}
 \usepackage{enumitem}
 
 \newcommand*{\dx}{\dif{}x}
@@ -26,18 +27,37 @@
     f'(u) &=& \frac{2u (u^2 + (1-u)^2) - u^2 (2 u - 2(1-u))}{(u^2 + (1-u)^2)^2} \\
     &=& \frac{2u^3 + 2u - 4u^2 + 2 u^3 - 2 u^3 + 2 u^2 - 2u^3}{(u^2 +
       (1-u)^2)^2} \\
-    &=& \frac{-4u^2}{(u^2 + (1-u)^2)^2}
+    &=& \frac{2u(1-u)}{(u^2 + (1-u)^2)^2}
     \end{IEEEeqnarray*}
-    \[ (f')^{-1}(\xi) = \frac{1}{2}\left( 1 - \sqrt{\frac{1}{\xi}\left( \sqrt{4\xi + 1}
-          - 1} - 1\right)} \right) \]
-    \[ u =
+    \[ (f')^{-1}(\xi) = \frac{1}{2}
+      \left(1 - \sqrt{
+          \frac{1}{\xi}
+          \left(
+            \sqrt{4\xi + 1} - 1
+          \right)
+          - 1} \right) \]
+
+
+Wir verwenden den Hinweis, dass die Lösung ein Verdünnungsfächer gefolgt von
+einem Schock der Form $x=st$ ist:
+
+  \[ u(x, t) =
       \begin{cases}
         u_1 & x < f'(u_1)t\\
-        (f')^{-1}(\frac{x}{t}) & f'(u_1) t \leq x \leq f'(u_2) t\\
-        u_2 & f'(u_2) t < x < st  \\
-        u_3 & st < x \\
+        (f')^{-1}(\frac{x}{t}) & f'(u_1) t \leq x \leq s t\\
+        u_2 & st < x \\
       \end{cases}
-\]
+  \]
+
+Damit die Anfangsbedingungen erfüllt sind, muss also $u_1 = 0$ und $u_2 = 1$ sein.
+
+  \[ u(x, t) =
+      \begin{cases}
+        0 & x < 0 \\
+        (f')^{-1}(\frac{x}{t}) & 0 \leq x \leq s t\\
+        1 & st < x \\
+      \end{cases}
+  \]
 
   \item
     \[v(x_1, x_2) = \begin{pmatrix}x_2\\x_1\end{pmatrix}\]
@@ -51,7 +71,11 @@
     \begin{pmatrix}\sinh(s)+c_1\\\cosh(s)+c_2\end{pmatrix}\]
 
   \item
+    Die erste Aussage ist bewiesen in der Mitschrift von Niklas Angleitner Lemma 3.2.1:
+    \url{http://www.asc.tuwien.ac.at/~melenk/teach/modellieren_WS1819/skript.pdf}.
+
   \item
+
 \end{enumerate}
 
 \end{document}
