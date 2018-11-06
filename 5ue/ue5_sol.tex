@@ -1,0 +1,62 @@
+\documentclass[a4paper,11pt]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage[headsepline]{scrlayer-scrpage}
+\ohead{Bernd Schwarzenbacher}
+\ihead{UE5}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{commath}
+\usepackage{mathtools}
+\usepackage[retainorgcmds]{IEEEtrantools}
+
+\usepackage{enumitem}
+
+\newcommand*{\dx}{\dif{}x}
+\newcommand*{\ds}{\dif{}s_x}
+\newcommand*{\IO}[1]{\int_{\Omega(t)}{#1}\dx}}
+\newcommand*{\IBO}[1]{\int_{\partial\Omega(t)}{#1}\ds}}
+
+\begin{document}
+
+\begin{enumerate}[label*=\textbf{5.\arabic*.}]
+  \item
+
+  \begin{enumerate}[label=\textbf{\alph*)}]
+    \item
+      Partiell integrieren pro Zeile $i$ von $\sigma$:
+      \[\IO{(a \times x) \nabla \cdot \sigma_i}} = - \IO{\nabla(a\times x)
+        \cdot \sigma_i} + \IBO{(a\times x) \sigma_i n}\]
+    \item
+      \begin{IEEEeqnarray*}{Cl}
+        &\IO{\sum_{i,j=1}^3 \partial_t (a\times x)_i \sigma_{ij}} \\
+        =& a \cdot
+        \IBO{x \times {(\sigma n)}} -\IO{(a\times x) \cdot (\nabla \cdot \sigma)} \\
+        =& a \cdot \IBO{x \times \left( \partial_t{\rho v} + \nabla \cdot (\rho
+            v v^T)\right) - x \times (\rho f)}-\IO{(a\times x) \cdot (\nabla \cdot \sigma)} \\
+        =& 0 \quad \forall a, \forall \Omega
+      \end{IEEEeqnarray*}
+
+    \item
+      Aus der Gleichung $\sum_{i,j=1}^3 \partial_j (a\times x)_i \sigma_{ij}$
+      wollen wir die Regeln $\sigma_{ij} - \sigma_{ji} = 0$ für $i\neq j$ folgern.
+
+      Wir sehen aus
+      \[
+        (a \times x) =
+      \begin{pmatrix}
+        a_2x_3 - a_3 x_2 \\ a_3 x_1 - a_1 x_3 \\ a_1 x_2 - a_2 x_1
+      \end{pmatrix}
+      \]
+      , dass $\partial_j (a\times x)_i = \pm a_k$ für $i \neq j \neq k$ und dass
+      es sich mit den Vorzeichen auch ausgeht.
+  \end{enumerate}
+
+  \item
+  \item
+  \item
+\end{enumerate}
+
+\end{document}
