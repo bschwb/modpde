@@ -18,8 +18,11 @@
 \newcommand*{\ds}{\dif{}s_x}
 \newcommand*{\IO}[1]{\int_{\Omega(t)}{#1}\dx}
 \newcommand*{\IBO}[1]{\int_{\partial\Omega(t)}{#1}\ds}
+\newcommand*{\hs}{\widehat{\sigma}}
+
 
 \DeclareMathOperator*{\Div}{Div}
+\DeclareMathOperator*{\spur}{spur}
 
 \begin{document}
 
@@ -80,8 +83,22 @@
 \partial_t (\rho v) \cdot v + \Div(\rho v v^T) \cdot v + \nabla \cdot (p v) &=&
 \rho f \cdot v \\
     \end{IEEEeqnarray*}
+
   \item
+    \[Q(t)^T = (e^{-t W})^T = e^{-t W^T} = e^{t W} \Rightarrow Q(t) Q(t)^T = I\]
+    Da schiefsymmetrische Matrizen auf der Diagonale nur $0$ Einträge haben gilt:
+    \[\det{Q(t)} = \det{e^{-tW}} = e^{\spur({-tW})} = e^0 = 1\]
+    \[\partial_t Q(t) = -W Q(t)\]
+    Aus
+    \[\hs(-W Q(t) Q(t)^T + Q(t) A Q(t)^T) = Q(t) \hs(A) Q(t)^T\]
+    folgt für $t=0$:
+    \[\hs(-W + A) = \hs(A)\]
+    Wählt man nun den schiefsymmetrischen Anteil von $A$ für $W = \frac{1}{2} (A
+    - A^T)$
+    folgt die Behauptung.
+
   \item
+
 \end{enumerate}
 
 \end{document}
