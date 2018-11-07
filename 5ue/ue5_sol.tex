@@ -16,8 +16,10 @@
 
 \newcommand*{\dx}{\dif{}x}
 \newcommand*{\ds}{\dif{}s_x}
-\newcommand*{\IO}[1]{\int_{\Omega(t)}{#1}\dx}}
-\newcommand*{\IBO}[1]{\int_{\partial\Omega(t)}{#1}\ds}}
+\newcommand*{\IO}[1]{\int_{\Omega(t)}{#1}\dx}
+\newcommand*{\IBO}[1]{\int_{\partial\Omega(t)}{#1}\ds}
+
+\DeclareMathOperator*{\Div}{Div}
 
 \begin{document}
 
@@ -27,7 +29,7 @@
   \begin{enumerate}[label=\textbf{\alph*)}]
     \item
       Partiell integrieren pro Zeile $i$ von $\sigma$:
-      \[\IO{(a \times x) \nabla \cdot \sigma_i}} = - \IO{\nabla(a\times x)
+      \[\IO{(a \times x) \nabla \cdot \sigma_i} = - \IO{\nabla(a\times x)
         \cdot \sigma_i} + \IBO{(a\times x) \sigma_i n}\]
     \item
       \begin{IEEEeqnarray*}{Cl}
@@ -55,6 +57,29 @@
   \end{enumerate}
 
   \item
+    \[\nabla\cdot(p v) = \nabla p \cdot v + p \underbrace{(\nabla \cdot v)}_{=0}\]
+    \[\partial_t \frac{1}{2}\rho \abs{v}^2 = \frac{1}{2} \rho_t \abs{v}^2 +
+      \rho v \cdot v_t\]
+    \[\Div(\rho v v^T) \cdot v = v \nabla \cdot (\rho v) \cdot v + \rho (v \cdot
+      \nabla) v \cdot v = -
+      \abs{v}^2 \rho_t + \rho (v \cdot \nabla) \abs{v}^2\]
+    \[\partial_t(\rho v) \cdot v = \rho_t \abs{v}^2 + \rho v_t \cdot v \]
+    \[\nabla \cdot \left(\frac{1}{2} \rho \abs{v}^2 v\right) =
+      \frac{1}{2}\nabla \rho \cdot \abs{v}^2 v + \rho \frac{1}{2} \nabla \cdot (\abs{v}^2 v)\]
+    \[
+      =\frac{1}{2}\nabla \rho \cdot \abs{v}^2 v + \rho \frac{1}{2} (\nabla
+      \abs{v}^2 \cdot v + \abs{v}^2 \underbrace{\nabla \cdot v}_{=0})
+    \]
+    \[
+      =\frac{1}{2}\nabla \rho \cdot \abs{v}^2 v + \rho (v \cdot \nabla) v \cdot v
+    \]
+    \begin{IEEEeqnarray*}{rCl}
+\partial_t (\rho v) + \Div(\rho v v^T) + \nabla p &=& \rho f \\
+\partial_t (\rho v) \cdot v + \Div(\rho v v^T) \cdot v + \nabla p \cdot v &=&
+\rho f \cdot v \\
+\partial_t (\rho v) \cdot v + \Div(\rho v v^T) \cdot v + \nabla \cdot (p v) &=&
+\rho f \cdot v \\
+    \end{IEEEeqnarray*}
   \item
   \item
 \end{enumerate}
