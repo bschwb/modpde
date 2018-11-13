@@ -12,6 +12,11 @@
 \usepackage{mathtools}
 \usepackage[retainorgcmds]{IEEEtrantools}
 
+\DeclareMathOperator*{\divop}{div}
+
+\newcommand*{\dx}{\dif{}x}
+\newcommand*{\dr}{\dif{}r}
+
 \usepackage{enumitem}
 
 \begin{document}
@@ -20,7 +25,52 @@
   \item
   \begin{enumerate}[label=\textbf{\alph*)}]
     \item
+      Dass $\divop{v} = 0$ erfüllt ist, folgt aus der Annahme der Gestalt von $v$.
+      Weiters gilt
+      \[(v \cdot \nabla) v =
+        \begin{pmatrix}
+          v_1 \partial_1 v_1 + v_2 \partial_2 v_1 + v_3 \partial_3 v_1\\
+          v_1 \partial_1 v_2 + v_2 \partial_2 v_2 + v_3 \partial_3 v_2\\
+          v_1 \partial_1 v_3 + v_2 \partial_2 v_3 + v_3 \partial_3 v_3
+        \end{pmatrix}
+        =
+        \begin{pmatrix}0\\0\\0\end{pmatrix}
+      \]
+
+      \[\partial_{22} v_1
+      = \partial_2\left(v_1'\frac{x_2}{r}\right)
+      = v_1'' \frac{x^2_2}{r^2} + v_1' \left( \frac{1}{r} - \frac{x_2^2}{r^3} \right)
+    \Rightarrow \Delta v_1 =
+    v_1'' + v_1'\left( \frac{2}{r} - \frac{1}{r}\right) = v_1'' + \frac{1}{r} v_1' \]
+
+    Also
+    \[ \nabla p =
+      \begin{pmatrix}
+        \partial_1 p\\\partial_2 p \\\partial_3 p
+      \end{pmatrix} =
+      \eta \Delta v =
+      \begin{pmatrix}\eta (v_1'' + \frac{1}{r} v_1')\\0\\0\end{pmatrix} \]
+
+    Daher $p = p(x_1)$ und die linke Seite hängt nur von $x_1$ ab, während die
+    rechte Seite nur von $x_2$ und $x_3$ abhängt. Also müssen beide Seiten
+    konstant sein.
+
+    \[p' = c \Rightarrow p = c x_1 + d\]
+    \[p_1 = p(0) = d, \quad p_2 = p(L) = c L + p_1 \Rightarrow c = \frac{p_2 - p_1}{L}\]
+    Mit Ansatz $v_1 = a r^2 + b$ gilt
+    \[\frac{c}{\eta} = v_1'' + \frac{1}{r}v_1' = 2 a + 2 a = 4 a \Rightarrow a
+      = \frac{c}{4\eta} = \frac{p_2 - p_1}{4\eta L}\]
+    Weiters gilt:
+    \[0 = v(R) \Rightarrow 0 = v_1(R) = a R^2 + b \Rightarrow b = - a R^2\]
+    \[ v_1(r) = a (r^2 - R^2) = \frac{p_1-p_2}{4\eta L}(R^2 - r^2)\]
+    
     \item
+      \[\int_\Omega v_1 \dx = 2\pi \int_0^R v_1(r) r \dr =
+        \frac{\pi(p_1-p_2)}{2\eta L}\left[\frac{R^4}{2} - \frac{r^4}{4}
+        \right]_{r=0}^R
+        = \frac{\pi(p_1-p_2)}{2\eta L} \frac{R^4}{4}
+      \]
+
   \end{enumerate}
 
   \item
