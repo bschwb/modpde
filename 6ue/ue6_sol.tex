@@ -117,7 +117,27 @@
       \[\Rightarrow p = - \rho \frac{1}{2} \norm{v}^2 + c\]
 
   \end{enumerate}
+
   \item
+    Transformation der NS-Gleichungen auf Zylinderkoordinaten:
+
+    \[(u1, u2, u3) = u_r (\cos \theta, \sin \theta, 0)  + u_\theta (-sin \theta,
+      cos \theta, 0) + u_z (0, 0, 1)\]
+    \[ \rho \left(\frac{D u_r}{D t} - \frac{u_\theta^2}{r}\right) = \rho f_r - \frac{\partial
+        p}{\partial r} + \mu \left[ \Delta u_r - \frac{u_r}{r^2} -
+        \frac{2}{r^2}\frac{\partial u_\theta}{\partial \theta} \right]\]
+    \[ \rho \left(\frac{D u_\theta}{D t} + \frac{u_r u_\theta}{r}\right) = \rho f_\theta -
+      \frac{1}{r} \frac{\partial p}{\partial \theta} + \mu \left(\Delta u_0 +
+      \frac{2}{r^2} \frac{\partial u_r}{\partial \theta} - \frac{u_0}{r^2}\right)\]
+    \[\rho \frac{D u_z}{D t} = \rho f_z - \frac{\partial p}{\partial z} + \mu
+      \Delta u_z\]
+
+    \[\Delta \varphi = \frac{1}{r} \frac{\partial}{\partial r} \left(  r
+        \frac{\partial\varphi}{\partial r} + \frac{1}{r^2} \frac{\partial^2
+          \varphi}{\partial \theta^2} + \frac{\partial^2 \varphi}{\partial z^2} \right)\]
+    \[ \frac{D\varphi}{D t} = \frac{\partial\varphi}{\partial t}+ u_r \frac{\partial
+        \varphi}{\partial r} + \frac{u_\theta}{r} \frac{\partial \varphi}{\partial
+        \theta} + u_z \frac{\partial \varphi}{\partial z}\]
 
 \end{enumerate}
 
