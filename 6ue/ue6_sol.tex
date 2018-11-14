@@ -15,6 +15,7 @@
 \DeclareMathOperator*{\divop}{div}
 
 \newcommand*{\dx}{\dif{}x}
+\newcommand*{\ds}{\dif{}s}
 \newcommand*{\dr}{\dif{}r}
 
 \usepackage{enumitem}
@@ -76,9 +77,45 @@
   \item
   \begin{enumerate}[label=\textbf{\alph*)}]
     \item
+      \[\nabla \times \nabla \phi =
+        \begin{pmatrix}
+          \partial_2 \partial_3 \phi - \partial_3 \partial_2 \phi\\\dots\\\dots
+        \end{pmatrix} = 0
+\]
     \item
+      \[0 = \nabla \cdot v = \nabla \cdot \nabla \phi = \Delta \phi\]
+
     \item
+      Wir starten bei der Impulserhaltung:
+      \[\partial_t (\rho v) + v \divop(\rho v) + \rho (v \cdot \nabla) v +
+        \nabla p = \rho f\]
+      \[\Rightarrow \nabla p = - \partial_t (\rho v) - v \divop(\rho v) - \rho (v \cdot \nabla) v \]
+      \[\nabla p = - \partial_t \rho v - \rho \partial_t v - v \divop(\rho v) - \rho (v \cdot \nabla) v \]
+
+      Aus der Massenerhaltung $\rho_t + \divop(\rho v) = 0$ folgt:
+      \[\nabla p = -\rho \partial_t v - \rho (v \cdot \nabla) v \]
+      \[\Rightarrow \int_C \frac{1}{\rho} \nabla p \cdot \ds
+        = \int_C -\partial_t v  - (v \cdot \nabla) v \cdot \ds
+        = \int_C -\partial_t \nabla \varphi  - (\nabla \varphi \cdot \nabla) \nabla \varphi \cdot \ds
+        \]
+      \[
+      = \int_C -\partial_t \nabla \varphi  - \nabla \left( \frac{1}{2}
+        \norm{\nabla \varphi}^2 \right)\cdot \ds
+      = \left[-\partial_t \varphi - \frac{1}{2}\norm{v}^2  \right]_{x_0}^{x_1}
+      \]
+
     \item
+      Inkompressible Navier-Stokes Gleichungen für homogenes Fluid:
+      \begin{IEEEeqnarray*}{rCl}
+        \rho [v_t + (v \cdot \nabla) v ] + \nabla p &=& \Delta v + \rho f \\
+        \divop v &=& 0
+      \end{IEEEeqnarray*}
+
+      Annahmen: stationär,  $f=0$ und Potentialströmung
+      \[ \Delta v_i = \Delta \partial_i \varphi = \partial_i \Delta \varphi = 0\]
+      \[\Rightarrow \nabla p = - \rho (v \cdot \nabla) v\]
+      \[\Rightarrow p = - \rho \frac{1}{2} \norm{v}^2 + c\]
+
   \end{enumerate}
   \item
 
