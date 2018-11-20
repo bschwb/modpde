@@ -12,18 +12,50 @@
 \usepackage{mathtools}
 \usepackage[retainorgcmds]{IEEEtrantools}
 
+\usepackage{siunitx}
 \usepackage{enumitem}
 
 \setlist[enumerate,2]{label=\textbf{\alph*)}}
 
+\sisetup{per-mode=fraction}
+
 \begin{document}
 
 \begin{enumerate}[label*=\textbf{7.\arabic*.}]
-  \item
+\item
   \begin{enumerate}
     \item
+  \[[E] = \si{\joule}, [t] = \si{\second}, [\rho] = \si{\kg\per\m^3}, [R] = \si{\m}\]
+    \[ R = C \cdot E^{\alpha_1} \cdot t^{\alpha_2} \cdot \rho^{\alpha_3}\]
+    \[\begin{pmatrix}\si{\m}\\\si{\s}\\\si{\kg}\end{pmatrix}
+      = \begin{pmatrix}1\\0\\0\end{pmatrix}
+      = \begin{pmatrix}2&0&-3\\-2&1&0\\1&0&1\end{pmatrix} \cdot x
+      = \begin{pmatrix}5&0&0\\-2&1&0\\1&0&1\end{pmatrix} \cdot x
+      \Rightarrow
+      x = \begin{pmatrix}1/5\\2/5\\-1/5\end{pmatrix}
+    \]
+    \[ \Rightarrow R = C \sqrt[5]{\frac{E t^2}{\rho}} \]
+    Aus der Beobachtung in der Angabe folgt $C = 1$.
+
     \item
+      Luftdichte wird angenommen als $\SI{1.2}{\kg\per\m^3}$.
+      \[E = \frac{R^5\rho}{t^2}\]
+
+      \begin{tabular}{c|c|c}
+        t [\si{\ms}]&R [\si{\m}]&E [\si{\J}]\\
+        \hline
+        6&75&\num{79e12}\\
+        16&100&\num{47e12}\\
+        25&120&\num{48e12}\\
+        90&160&\num{16e12}\\
+      \end{tabular}
+
+      Schätzung der Explosion auf $\SI{50}{\mega\J}$.
+
     \item
+      \[E = \SI{1e44}{\J}, \rho=\SI{2e-21}{\kg\per\m^3}, R=\SI{315.4e15}{\m}\]
+      \[t = \sqrt{\frac{R^5\rho}{E}} = \SI{2.5e11}{\s} \approx 7900 \;{\si{years}}\]
+      
   \end{enumerate}
   \item
   \begin{enumerate}
