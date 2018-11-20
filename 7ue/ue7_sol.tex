@@ -25,14 +25,14 @@
 \item
   \begin{enumerate}
     \item
-  \[[E] = \si{\joule}, [t] = \si{\second}, [\rho] = \si{\kg\per\m^3}, [R] = \si{\m}\]
+  \[[E] = \si{\joule} = \si{\m^2\kg\per\s^2}, [t] = \si{\second}, [\rho] = \si{\kg\per\m^3}, [R] = \si{\m}\]
     \[ R = C \cdot E^{\alpha_1} \cdot t^{\alpha_2} \cdot \rho^{\alpha_3}\]
     \[\begin{pmatrix}\si{\m}\\\si{\s}\\\si{\kg}\end{pmatrix}
       = \begin{pmatrix}1\\0\\0\end{pmatrix}
-      = \begin{pmatrix}2&0&-3\\-2&1&0\\1&0&1\end{pmatrix} \cdot x
-      = \begin{pmatrix}5&0&0\\-2&1&0\\1&0&1\end{pmatrix} \cdot x
+      = \begin{pmatrix}2&0&-3\\-2&1&0\\1&0&1\end{pmatrix} \cdot \alpha
+      = \begin{pmatrix}5&0&0\\-2&1&0\\1&0&1\end{pmatrix} \cdot \alpha
       \Rightarrow
-      x = \begin{pmatrix}1/5\\2/5\\-1/5\end{pmatrix}
+      \alpha = \begin{pmatrix}1/5\\2/5\\-1/5\end{pmatrix}
     \]
     \[ \Rightarrow R = C \sqrt[5]{\frac{E t^2}{\rho}} \]
     Aus der Beobachtung in der Angabe folgt $C = 1$.
@@ -57,11 +57,37 @@
       \[t = \sqrt{\frac{R^5\rho}{E}} = \SI{2.5e11}{\s} \approx 7900 \;{\si{years}}\]
       
   \end{enumerate}
+  
   \item
   \begin{enumerate}
     \item
+    \[ h_r = C h_0^{\alpha_1}
+      R^{\alpha_2}E^{\alpha_3}\rho^{\alpha_4}g^{\alpha_5} \]
+
+      \begin{tabular}{c|c}
+        Größe & Einheiten \\
+        \hline
+        $h_r$ & \si{\m} \\
+        $h_0$ & \si{\m} \\
+        R & \si{m} \\
+        $\rho$ & \si{\kg\per\m^3}\\
+        E & \si{\kg\m\per\s^2\m^2}\\
+        g & \si{\m\per\s^2} \\
+      \end{tabular}
+
+    \[\begin{pmatrix}\si{\m}\\\si{\s}\\\si{\kg}\end{pmatrix}
+      = \begin{pmatrix}1\\0\\0\end{pmatrix}
+      = \begin{pmatrix}1&1&-3&-1&1\\0&0&0&-2&-2\\0&0&1&1&0\end{pmatrix} \cdot \alpha
+      \Rightarrow
+      \alpha = \begin{pmatrix}c\\c\\c\\-c\\c\end{pmatrix}
+    \]
+
     \item
+    \[\Rightarrow h_r = \frac{h_0 R \rho g}{E}\]
+
     \item
+      $E$ auch verdoppeln.
+
   \end{enumerate}
   \item
   \begin{enumerate}
