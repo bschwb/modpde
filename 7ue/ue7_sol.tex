@@ -15,6 +15,13 @@
 \usepackage{siunitx}
 \usepackage{enumitem}
 
+\newcommand*{\eps}{\varepsilon}
+\newcommand*{\sm}{\sum_{i=0}^\infty}
+\newcommand*{\sn}{\sum_{i=0}^n}
+\newcommand*{\nL}[1]{\norm{#1}^2_{L^2(0,1)}}
+\newcommand*{\nH}[1]{\norm{#1}^2_{H_1(0,1)}}
+\newcommand*{\Ld}{\mathcal{O}}
+
 \setlist[enumerate,2]{label=\textbf{\alph*)}}
 
 \sisetup{per-mode=fraction}
@@ -89,18 +96,64 @@
       $E$ auch verdoppeln.
 
   \end{enumerate}
+
   \item
   \begin{enumerate}
     \item
+      \[-y'' + \eps y' + y = f(x), \quad y(0)=y(1)=0\]
+      \[ y = \sm \eps^i y_i \Rightarrow -\sm \eps^i y_i'' + \sm \eps^{i+1} y_i' +
+        \sm \eps^i y_i = f(x), \quad \sm \eps^i y_i(0) = \sm \eps^i y_i(1) = 0\]
+      $\eps^i$ Koeffizientenvergleich führt zu:
+      \[ - y_0'' + y_0 = f(x), \quad y_0(0) = y_0(1) = 0\]
+      \[ - y_i'' + y_i = -y_{i-1}, \quad y_i(0) = y_i(1) = 0 \quad \forall i
+        \geq 1\]
+
     \item
+      \[ \nL{y_0'} + \nL{y_0} \leq \nL{f}\]
+      \[ \nL{y_i'} + \nL{y_i} \leq \nL{y'_{i-1}} \leq \nL{f}\]
+      Also Stabilität der (endlichen) Reihe folgt.
+
+      \[-\sn \eps^i y''_i + \sn \eps^i y = f - \sum_{i=0}^{n-1} \eps^{i+1} y'_i \]
+
+      Daher erfüllt die endliche Reihe die Gleichung bis auf einen Fehlerterm
+      von:
+      \[\eps^{n} y'_{n-1}\]
+
     \item
+      Sobolev Einbettungssatz: $\gamma = k - \frac{n}{p} > m$, $n=1, k=1, p=2, m=0$
+
     \item
+      \[\nH{\sm \eps^i y_i} \leq \sm \eps^i \nH{y_i} = \frac{1}{1 - \eps} \nL{f}\]
+      Konvergiert wieder gleichmäßig in $C^0$ wegen dem Einbettungssatz also konvergiert die Reihe.
+
   \end{enumerate}
+
   \item
   \begin{enumerate}
     \item
+      \[y''_0 + \eps y''_1 + \Ld(\eps^2) = -1 - \eps (y'_0 + \eps y'_1)^2 + \Ld(\eps^2)\]
+      \[\Rightarrow y''_0 = -1, \quad y_0(0) = 0, \; y'_0(0)=1 \]
+      \[y''_1 = -(y'_0)^2, \quad y_1(0) = 0, \; y'_1(0)=0\]
+      \[y'_0 = -t + c = -t + 1\]
+      \[y_0 = -\frac{t^2}{2}+ t + d = -\frac{t^2}{2} + t\]
+      \[y''_1 = -(y'_0)^2 = t^2 - 2t + 1\]
+
+      \[\Rightarrow y'_1 = \frac{t^3}{3} - t^2 + t, \quad y_1 = \frac{t^4}{12} - \frac{t^3}{3} + \frac{t^2}{2}\]
+
     \item
+      Summe aufschreiben.
+
     \item
+      $v_0(t) = y(t, 0)$ erfüllt die Gleichung:
+      \[v''_0 = -1, \quad v_0(0) = 0, y'(0) = 1 \]
+      \[\Rightarrow v'_0 = -t + c = t+1 \Rightarrow v_0 = \frac{-t^2}{2} + t +
+        d, \quad d=0\]
+      \[\partial_\eps y''(t,\eps) = \partial_\eps(1 - \eps(y'(t,\eps))^2) =
+        -(y'(t, \eps))^2 - \eps 2 (y'(t, \eps)) \partial_\eps y'(t, \eps) \]
+      \[v_1 = \partial_\eps y(t, \eps) |_{\eps = 0}\]
+      \[v''_1 = -(v_0')^2\]
+      Also wie in \textbf{a)}.
+
   \end{enumerate}
 \end{enumerate}
 
