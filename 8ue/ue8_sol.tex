@@ -108,7 +108,14 @@
         e^{\frac{3}{2}} - \eps \frac{5}{72} \frac{1}{2}\zeta e^{\frac{3}{2}}
       \right) + \Ld(\eta^2) \]
 
-    \[Y_0(\xi)+\eps Y_1(\xi) = a (1 - e^{-2 \frac{\zeta \eta}{\eps}}) - \eps e^{-2\h}  \]
+    \[Y_0(\xi)+\eps Y_1(\xi) = a (1 - e^{-2 \frac{\zeta \eta}{\eps}}) - \eps
+      e^{-2\frac{\zeta \eta}{\eps}} \left( \frac{1}{2} a \frac{\zeta \eta}{\eps}
+      - c_2 \right) + \eps \frac{1 - a}{2}\frac{\zeta\eta}{\eps} + \eps c_2   \]
+    \[ = a (1 - 1 + 2 \frac{\zeta \eta}{\eps} + \Ld(\eta^2)) - \eps
+      (1 - 2\frac{\zeta \eta}{\eps} + \Ld(\eta^2)) \left( \frac{1}{2} a \frac{\zeta \eta}{\eps}
+      - c_2 \right) + \eps \frac{1 - a}{2}\frac{\zeta\eta}{\eps} + \eps c_2   \]
+  \[ = 2\eps c_2 + \eta \left( 2 a\frac{\zeta}{\eps} + 2 c_2 \zeta - \frac{1}{2}
+    a \zeta + \frac{1-a}{2}\zeta\right) + \Ld(\eta^2)\]
     % Ansatz:
     % \[Y_{1p} = c_1 e^{-2\xi} + c_2 \xi e^{-2 \xi}\]
     % Einsetzen:
@@ -149,6 +156,12 @@
 
 % ==================== 8.5 ==================== 
 \item
+  \[u_t = \left(-\frac{1}{2} u^2_x - u_{xx}\right)_x\]
+  \[m_1(u)_t = \int_{-\infty}^{\infty} u_t \dx = \int_{\infty}^\infty
+    \left(-\frac{1}{2} u^2_x - u_{xx}\right)\dx = 0\]
+
+  \[ 2u u_t = - 2 u^2 u_x - 2 u u_{xxx} \]
+  \[ \frac{1}{2} (u^2)_t = - \frac{2}{3} (u^3)_x - (2u u_{xx})_x + ((u_x)^2)_x \]
 
 \end{enumerate}
 
