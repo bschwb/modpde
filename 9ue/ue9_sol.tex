@@ -17,6 +17,9 @@
 \newcommand*{\eps}{\varepsilon}
 \newcommand*{\sm}{\sum_{i=0}^\infty}
 \newcommand*{\Ld}{\mathcal{O}}
+\newcommand*{\pyi}[1]{\frac{\partial{#1}}{\partial y_i}}
+\newcommand*{\pxj}[1]{\frac{\partial{#1}}{\partial x_j}}
+\newcommand*{\Dx}{\Delta{}x}
 
 \setlist[enumerate,2]{label=\textbf{\alph*)}}
 
@@ -25,7 +28,8 @@
 \begin{enumerate}[label*=\textbf{9.\arabic*.}]
 
 % ==================== 9.1 ====================
-\item \begin{enumerate}
+\item
+  \begin{enumerate}
   \item
   \item
 \end{enumerate}
@@ -49,8 +53,53 @@
 % ==================== 9.5 ====================
 \item \begin{enumerate}
   \item
+    In jedem Punkt ist $\nabla \varphi(x)$ eine orthogonale Matrix $Q(x)$,
+    da $\nabla\varphi(x)^{-1} = (\nabla \varphi(x))^\top$.
+    Außerdem gilt auch $C_{\varphi^{-1}} \equiv I$, da $\nabla \varphi^{-1} =
+    (\nabla \varphi)^{-1}$.
+
+    Aus dem Angleitner Skript S. 29:
+    \[
+      \frac{\norm{\varphi(x+\Dx) - \varphi(x)}^2}{\norm{(x + \Dx) - x}^2}
+    = \frac{\norm{\nabla\varphi(x)\cdot \Dx + \Ld(\norm{\Delta
+          x}^2)}^2}{\norm{\Dx}^2}\]
+    \[= \frac{(\Dx)^\top \cdot
+      (\nabla\varphi(x))^\top \cdot (\nabla\varphi(x))\cdot \Dx}{\norm{\Delta
+        x}^2} + \Ld(\norm{\Dx}) \overset{C=I}{=} 1 + \Ld(\norm{\Dx}) \]
+
+  Wählt man nun $x + \Dx = y$ erhält man:
+\[ \frac{\norm{\varphi(y) - \varphi(x)}^2}{\norm{y - x}^2} = 1 +
+  \Ld(\norm{\Dx}) \]
+Und das ganze für $\varphi^{-1}$:
+\[ \frac{\norm{y - x}^2}{\norm{\varphi(y) - \varphi(x)}^2} = 1 +
+  \Ld(\norm{\varphi(y)-\varphi(x)}) = 1 + \Ld(\norm{\Dx})\]
+
+Also
+\[ \frac{\norm{\varphi(y) - \varphi(x)}^2}{\norm{y - x}^2} = 1 +
+  \Ld(\norm{\Dx}) = 1 + \Ld(\norm{\Dx}^{-1}) \]
+
+Kann man daraus schließen, dass die $\norm{\Dx}$ Terme wegfallen?
+
+Offene Frage: Wo geht Konvexität von $B$ ein?
+
   \item
+    Aus \textbf{a)} gilt $G(x, y) = 0$.
+
+    Zuerst nach $y_i$ und dann nach $x_j$ differenzieren führt zur gesuchten Identität:
+    \[G(x, y) = \sum_k (\varphi_k(x) - \varphi_k(y))^2 - (x_k - y_k)^2 = 0\]
+    \[\pyi{}G(x,y) = -2 \sum_k (\varphi_k(x) - \varphi_k(y)) \pyi{\varphi_k(y)}
+      + 2 (x_i - y_i) = 0\]
+    \[\pxj{}\pyi{}G(x,y) = -2 \sum_k \pyi{\varphi_k(y)} \pxj{\varphi_k(x)}
+      + 2 \delta_{ij} = 0\]
+
+    Also $(\nabla\varphi(y))^\top \nabla\varphi(x) = I$ auch für verschiedene
+    Punkte $y, x \in B$.
+
   \item
+    Es folgt, dass in konvexen Umgebungen von $x \in \Omega$ gilt: $(\nabla
+    \varphi(y))^\top = \nabla \varphi(x)^{-1}$ und damit $\nabla \varphi(x) =
+    \nabla \varphi(y)$. $\nabla\varphi$ ist lokal eine konstante orthogonale
+    Matrix $Q$. Damit $\varphi(x) = Q x + a$.
 \end{enumerate}
 
 \end{enumerate}
