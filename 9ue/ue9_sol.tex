@@ -5,6 +5,7 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{commath}
+\usepackage[retainorgcmds]{IEEEtrantools}
 
 \usepackage[ngerman]{cleveref}
 \usepackage{graphicx}
@@ -112,10 +113,41 @@
     \[\Rightarrow y'(t) = \sqrt{-y^2 - \eps \frac{y^4}{2} + a^2 + \eps \frac{a^4}{2}}\]
     \[\Rightarrow t'(y) = \frac{1}{\sqrt{-y^2 - \eps \frac{y^4}{2} + a^2 + \eps \frac{a^4}{2}}}\]
 
-    Integral entlang eines Orbits:
+    Integral der Zeitableitung entlang eines Orbits ergibt die Periodendauer und
+    $t'$ ist gerade ist gerade:
     \[T(\eps, a) = \int_a^0 t'(y) \dy + \int_0^{-a} t'(y) \dy + \int_{-a}^0
       t'(y) \dy + \int_0^a t'(y) \dy = 4 \int_0^a t'(y) \dy\]
+
+    Als nächstes kommt die Taylor-Entwicklung von $T(\eps, a)$ in $\eps$ um 0:
+    \[ \partial_\eps t'(y) = -\frac{1}{2} \left(-y^2 -\eps
+          \frac{y^4}{2} + a^2 + \eps \frac{a^4}{2}\right)^{-\frac{3}{2}} \left(
+          -\frac{y^4}{2} + \frac{a^4}{2} \right) \]
+    \[ \partial_{\eps\eps} t'(y) = \frac{3}{4} \left(-y^2 -\eps
+          \frac{y^4}{2} + a^2 + \eps \frac{a^4}{2}\right)^{-\frac{5}{2}} \left(
+          -\frac{y^4}{2} + \frac{a^4}{2} \right)^2 \]
+
+      \begin{IEEEeqnarray*}{rCl}
+    T(\eps, a) &=& 4 \int_0^a \frac{1}{\sqrt{a^2 - y^2}} + \eps \frac{1}{2}
+      \left( a^2 - y^2 \right)^{-\frac{3}{2}}\left( \frac{y^4}{2} -
+        \frac{a^4}{2}\right) + \Ld(\eps^2) \dy \\
+      &=& 4 \int_0^a \frac{1}{\sqrt{a^2 - y^2}}
+      + \eps \frac{1}{4} \left(a^2 - y^2 \right)^{-\frac{3}{2}}(y^2 + a^2)(y^2-a^2)
+      + \Ld(\eps^2) \dy \\
+      &=& 4 \int_0^a \frac{1}{\sqrt{a^2 - y^2}}
+      + \eps \frac{-1}{4} \sqrt{\frac{(a^2+y^2)^2}{a^2-y^2}} + \Ld(\eps^2) \\
+      &=& 2 \pi - \eps \frac{3 \pi a^2}{4} + \Ld(\eps^2)
+      \end{IEEEeqnarray*}
+    
   \item
+    Einsetzen der Reihenentwicklung von $\sin$ führt zu:
+    \[ y'' + y - \frac{1}{6} y^3 = 0\]
+    Das ist genau die Gleichung von \textbf{a)} mit $\eps = -\frac{1}{6}$.
+
+    \[\Rightarrow T(a) = 2\pi + \frac{1}{8} \pi a^2 + \Ld(\eps^3)\]
+    Und mit Taylor für $\frac{1}{x}$ erhält man:
+    \[\omega = 2\pi f = \frac{2\pi}{T} \approx 1 - \frac{1}{16} a^2 \]
+
+    
 \end{enumerate}
 
 
@@ -169,7 +201,7 @@
   %   \cos(t) - a \sin(t)   \]
 
 
-\[2\sin \theta \cos \varphi ={\sin(\theta +\varphi )+\sin(\theta -\varphi )\]
+\[2\sin \theta \cos \varphi =\sin(\theta +\varphi )+\sin(\theta -\varphi )\]
 
 % ==================== 9.5 ====================
 \item \begin{enumerate}
