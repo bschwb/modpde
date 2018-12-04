@@ -16,6 +16,7 @@
 \newcommand*{\pyi}[1]{\frac{\partial{#1}}{\partial y_i}}
 \newcommand*{\pxj}[1]{\frac{\partial{#1}}{\partial x_j}}
 \newcommand*{\Dx}{\Delta{}x}
+\newcommand*{\yt}{\tilde{y}}
 
 \setlist[enumerate,2]{label=\textbf{\alph*)}}
 
@@ -55,18 +56,18 @@
     \[ y_0 = r(T) \cos(t + \varphi(T))\]
     Die DGL für den $\eps^1$ Term ist:
     \[\partial_{11} y_1 + y_1 = - (\partial_1 y_0)^3 -2 \partial_{12} y_0\]
-    \[\partial_1 y_0 = r(T) \sin(t+\varphi(T)), \quad (\partial_1 y_0)^3 =
-      r^3(T) \frac{3 \sin(t + \varphi(T)) - \sin(3 (t + \varphi(T))}{4}\]
-    \[\partial_{12} y_0 = r'(T) \sin(t+\varphi(T)) - r(T) \cos(t + \varphi(T)) \varphi'(T) \]
+    \[\partial_1 y_0 = -r(T) \sin(t+\varphi(T)), \quad (\partial_1 y_0)^3 =
+      -r^3(T) \frac{3 \sin(t + \varphi(T)) - \sin(3 (t + \varphi(T))}{4}\]
+    \[\partial_{12} y_0 = -r'(T) \sin(t+\varphi(T)) - r(T) \cos(t + \varphi(T)) \varphi'(T) \]
 
     Daher ist die rechte Seite der $\eps^1$-Gleichung:
-    \[\left(2r'(T) + \frac{3}{4} r^3(T)\right) \sin(t + \varphi(T)) - r(T) \varphi'(T) \cos(t
-     + \varphi(T)) - 2r^3(T) \sin(3(t + \varphi(T))) \]
+    \[\left(2r'(T) + \frac{3}{4} r^3(T)\right) \sin(t + \varphi(T)) + 2 r(T) \varphi'(T) \cos(t
+     + \varphi(T)) - \frac{1}{4} r^3(T) \sin(3(t + \varphi(T))) \]
 
    Damit $y_1$ kein Wachstum in $t$ hat setzen wir die Terme vor den Lösungen der
    homogenen Gleichung auf 0.
    ($\sin(t), \cos(t)$ würden die homogene Gleichung lösen; $\sin(3t)$ nicht).
-   \[ 2r'(T) + \frac{3}{4}r^3(T) = 0, \quad -r(T)\varphi'(T) = 0\]
+   \[ 2r'(T) + \frac{3}{4}r^3(T) = 0, \quad 2r(T)\varphi'(T) = 0\]
    Die erste Gleichung kann mittels Variablenseparation gelöst werden und die
    \[ r = \frac{1}{\sqrt{\frac{6}{8}T + c_1}}\]
    Aus der zweiten Gleichungt folgt $\varphi'(T) = 0 \Rightarrow \varphi(T) \equiv c_2$.
@@ -92,17 +93,56 @@
 % ==================== 9.2 ====================
 \item \begin{enumerate}
   \item
+    Für die Energie multipliziert man die Gleichung mit $y'$ und integriert:
+    \[\frac{(y')^2}{2} + \frac{y^2}{2} + \eps \frac{y^4}{4} = c\]
+
+    System:
+    \[\begin{pmatrix}y'\\v'\end{pmatrix}=
+      \begin{pmatrix}v\\-\eps y^3 - y\end{pmatrix}
+    \]
+
+
+    Das Phasenportrait sieht ähnlich aus wie das Phasenportrait in
+    \textbf{9.1a)}. Nur der nichtlineare Anteil wird durch $y$ verstärkt anstatt
+    durch $v$.
   \item
 \end{enumerate}
 
 
 % ==================== 9.3 ====================
 \item
+  \[\yt(\tau) = \yt\left(\frac{t}{\omega}\right)= y(t)\]
+  \[\frac{1}{\omega^2} \yt'' = y''\]
+  \[\yt'' + \omega^2 \yt + \eps \yt^3 = 0\]
+  \[y''_0 + \eps y''_1 + (1 + 2 \eps \omega_1)(y_0 + \eps y_1) + \eps 
+(1 + 2 \eps \omega_1) y^3_0 + \Ld(\eps^2)= 0\]
+
+  \[\eps^0: y''_0 + y_0 = 0\]
+  \[\eps^1: y''_1 + y_1 + 2 \omega_1 y_0 + y_0^3 = 0\]
+
+  \[y_0 = a \cos(t)\]
+  \[y_1'' + y_1 = -2 \omega_1 a \cos(t) - a^3 \frac{3 \cos(t) + \cos(3t)}{4}\]
+
+  Die Rezonanzterme werden unterdrückt so wie in \textbf{9.1a)}:
+  \[-2\omega_1 a - \frac{3}{4} a^3 = 0\]
+  \[\Rightarrow \omega_1 = -\frac{3}{8} a^2\]
 
 
 % ==================== 9.4 ====================
 \item
+  \[ \yt'' + \eps(\yt^2 - 1) \omega \yt' + \yt = 0\]
+  \[ (y''_0 + \eps y''_1 + \eps^2 y''_2) + \eps (y^2_0 + 2 \eps y_0 y_1 - 1) (1
+    + \eps \omega_1) (y'_0 + \eps y'_1) + (1 + 2 \eps \omega_1 + \eps^2 \omega^2_1
+    + 2 \eps^2 \omega_2)
+    (y_0 + \eps y_1 + \eps^2 y_2) + \Ld(\eps^3)\]
+  \[ \eps^0: y''_0 + y_0 = 0\]
+  \[ \eps^1: y''_1 + (y^2_0-1) y'_0 + y_1 + 2 \omega_1 y_0 = 0 \]
+  \[ \eps^2: y''_2 + (y_0^2-1) y'_1 + y'_0 (y_0^2 \omega_1 - \omega_1 + 2 y_0 y_1)  + y_2 + 2 \omega_1 y_1 + \omega^2_1 y_0 + 2\omega_2 y_0 = 0\]
 
+  Aus $\eps^0$ folgt:
+  $y_0 = A sin(t) + B cos(t)$.
+  Die Inhomogenität für $\eps^1$ ist:
+  
 
 % ==================== 9.5 ====================
 \item \begin{enumerate}
@@ -154,6 +194,7 @@ Offene Frage: Wo geht Konvexität von $B$ ein?
     \varphi(y))^\top = \nabla \varphi(x)^{-1}$ und damit $\nabla \varphi(x) =
     \nabla \varphi(y)$. $\nabla\varphi$ ist lokal eine konstante orthogonale
     Matrix $Q$. Damit $\varphi(x) = Q x + a$.
+
 \end{enumerate}
 
 \end{enumerate}
