@@ -140,9 +140,19 @@
   \[ \eps^2: y''_2 + (y_0^2-1) y'_1 + y'_0 (y_0^2 \omega_1 - \omega_1 + 2 y_0 y_1)  + y_2 + 2 \omega_1 y_1 + \omega^2_1 y_0 + 2\omega_2 y_0 = 0\]
 
   Aus $\eps^0$ folgt:
-  $y_0 = A sin(t) + B cos(t)$.
+  $y_0 = a \cos(t) + b \sin(t)$.
+
   Die Inhomogenität für $\eps^1$ ist:
-  
+
+  \[(a^2 \cos(t)^2  + 2ab \sin(t) \cos(t) + b^2 \sin^2 (t)- 1) (a \sin(t) - b
+    \cos(t)) - \omega_1 (a \cos(t) + b \sin(t)) \]
+  %   \[= \left(a^2 \frac{1
+  %       +\cos(2t)}{2}-1\right)a \sin(t) - \omega_1 a \cos(t)\]
+  % \[=\frac{a^3}{2} \sin(t) + \frac{a^3}{4} (\sin(3t) + \sin(t)) - \omega_1 a
+  %   \cos(t) - a \sin(t)   \]
+
+
+\[2\sin \theta \cos \varphi ={\sin(\theta +\varphi )+\sin(\theta -\varphi )\]
 
 % ==================== 9.5 ====================
 \item \begin{enumerate}
@@ -152,29 +162,13 @@
     Außerdem gilt auch $C_{\varphi^{-1}} \equiv I$, da $\nabla \varphi^{-1} =
     (\nabla \varphi)^{-1}$.
 
-    Aus dem Angleitner Skript S. 29:
-    \[
-      \frac{\norm{\varphi(x+\Dx) - \varphi(x)}^2}{\norm{(x + \Dx) - x}^2}
-    = \frac{\norm{\nabla\varphi(x)\cdot \Dx + \Ld(\norm{\Delta
-          x}^2)}^2}{\norm{\Dx}^2}\]
-    \[= \frac{(\Dx)^\top \cdot
-      (\nabla\varphi(x))^\top \cdot (\nabla\varphi(x))\cdot \Dx}{\norm{\Delta
-        x}^2} + \Ld(\norm{\Dx}) \overset{C=I}{=} 1 + \Ld(\norm{\Dx}) \]
+    Taylor-Restglied:
+    \[\varphi(x) = \varphi(y) + \int_0^1 \nabla\varphi ((1 - t) y + t x) \cdot (x - y) \dif{}t\]
 
-  Wählt man nun $x + \Dx = y$ erhält man:
-\[ \frac{\norm{\varphi(y) - \varphi(x)}^2}{\norm{y - x}^2} = 1 +
-  \Ld(\norm{\Dx}) \]
-Und das ganze für $\varphi^{-1}$:
-\[ \frac{\norm{y - x}^2}{\norm{\varphi(y) - \varphi(x)}^2} = 1 +
-  \Ld(\norm{\varphi(y)-\varphi(x)}) = 1 + \Ld(\norm{\Dx})\]
-
-Also
-\[ \frac{\norm{\varphi(y) - \varphi(x)}^2}{\norm{y - x}^2} = 1 +
-  \Ld(\norm{\Dx}) = 1 + \Ld(\norm{\Dx}^{-1}) \]
-
-Kann man daraus schließen, dass die $\norm{\Dx}$ Terme wegfallen?
-
-Offene Frage: Wo geht Konvexität von $B$ ein?
+    \[\norm{\varphi(x) - \varphi(y)}_2 \leq \max_{w\in B} \norm{\nabla\varphi(w)} \norm{x-y}_2\]
+    und $\norm{\nabla\varphi} = 1$, weil $\nabla\phi$ in jedem Punkt eine
+    orthogonale Matrix ist.
+    Das gleiche Argument gilt für $\nabla\phi^{-1}$ und somit gilt die Aussage.
 
   \item
     Aus \textbf{a)} gilt $G(x, y) = 0$.
