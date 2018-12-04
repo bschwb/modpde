@@ -17,6 +17,7 @@
 \newcommand*{\pxj}[1]{\frac{\partial{#1}}{\partial x_j}}
 \newcommand*{\Dx}{\Delta{}x}
 \newcommand*{\yt}{\tilde{y}}
+\newcommand*{\dy}{\dif{}y}
 
 \setlist[enumerate,2]{label=\textbf{\alph*)}}
 
@@ -94,17 +95,26 @@
 \item \begin{enumerate}
   \item
     Für die Energie multipliziert man die Gleichung mit $y'$ und integriert:
-    \[\frac{(y')^2}{2} + \frac{y^2}{2} + \eps \frac{y^4}{4} = c\]
+    \[\frac{(y')^2}{2} + \frac{y^2}{2} + \eps \frac{y^4}{4} = E\]
 
     System:
     \[\begin{pmatrix}y'\\v'\end{pmatrix}=
       \begin{pmatrix}v\\-\eps y^3 - y\end{pmatrix}
     \]
 
-
     Das Phasenportrait sieht ähnlich aus wie das Phasenportrait in
     \textbf{9.1a)}. Nur der nichtlineare Anteil wird durch $y$ verstärkt anstatt
     durch $v$.
+
+    Auf jedem Orbit ist die Energie konstant, also auch im dem Punkt wo $y(t) =
+    a \text{ und } y'(t) = 0$
+    \[\Rightarrow E = \frac{a^2}{2}+\eps \frac{a^4}{4}\]
+    \[\Rightarrow y'(t) = \sqrt{-y^2 - \eps \frac{y^4}{2} + a^2 + \eps \frac{a^4}{2}}\]
+    \[\Rightarrow t'(y) = \frac{1}{\sqrt{-y^2 - \eps \frac{y^4}{2} + a^2 + \eps \frac{a^4}{2}}}\]
+
+    Integral entlang eines Orbits:
+    \[T(\eps, a) = \int_a^0 t'(y) \dy + \int_0^{-a} t'(y) \dy + \int_{-a}^0
+      t'(y) \dy + \int_0^a t'(y) \dy = 4 \int_0^a t'(y) \dy\]
   \item
 \end{enumerate}
 
@@ -113,17 +123,24 @@
 \item
   \[\yt(\tau) = \yt\left(\frac{t}{\omega}\right)= y(t)\]
   \[\frac{1}{\omega^2} \yt'' = y''\]
+  In die DGL einsetzen und mit $\omega^2$ multiplizieren.
   \[\yt'' + \omega^2 \yt + \eps \yt^3 = 0\]
+  Jetzt führen wir die Entwicklungen durch wie in der Aufgabenstellung gegeben.
+  $1$ als erster Term für die Entwicklung von Omega macht Sinn, da die Gleichung
+  für $\eps=0$ eine Schwingung mit Kreisfrequenz $\omega=1$ ist.
   \[y''_0 + \eps y''_1 + (1 + 2 \eps \omega_1)(y_0 + \eps y_1) + \eps 
 (1 + 2 \eps \omega_1) y^3_0 + \Ld(\eps^2)= 0\]
 
   \[\eps^0: y''_0 + y_0 = 0\]
   \[\eps^1: y''_1 + y_1 + 2 \omega_1 y_0 + y_0^3 = 0\]
 
+  Aus der $\eps^0$ Gleichung folgt mit den Anfangswerten:
   \[y_0 = a \cos(t)\]
+  Aus der $\eps^1$ Gleichung folgt mit der Identität $\cos^3(\theta) = \frac{3
+    \cos(\theta) + \cos(3 \theta)}{4}$:
   \[y_1'' + y_1 = -2 \omega_1 a \cos(t) - a^3 \frac{3 \cos(t) + \cos(3t)}{4}\]
-
-  Die Rezonanzterme werden unterdrückt so wie in \textbf{9.1a)}:
+  Die Rezonanzterme werden unterdrückt so wie in \textbf{9.1a)} mit der gleichen
+  Begründung.
   \[-2\omega_1 a - \frac{3}{4} a^3 = 0\]
   \[\Rightarrow \omega_1 = -\frac{3}{8} a^2\]
 
