@@ -1,17 +1,13 @@
 \documentclass[a4paper,11pt]{scrartcl}
-\usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
 
-\usepackage[headsepline]{scrlayer-scrpage}
-\ohead{Bernd Schwarzenbacher}
-\ihead{UE9}
-
-\usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{amsmath}
 \usepackage{commath}
-\usepackage{mathtools}
-\usepackage[retainorgcmds]{IEEEtrantools}
 
+\usepackage[ngerman]{cleveref}
+\usepackage{graphicx}
 \usepackage{enumitem}
 
 \newcommand*{\eps}{\varepsilon}
@@ -31,7 +27,65 @@
 \item
   \begin{enumerate}
   \item
+    DGL als System:
+    \[\begin{pmatrix}y'\\v'\end{pmatrix}=
+      \begin{pmatrix}v\\-\eps v^3 - y\end{pmatrix}
+    \]
+    Linearisiert ist der 0 punkt ein Zentrum.
+    Der nichtlineare Anteil hilft zusäzlich die Lösung beschränkt zu halten.
+    Sieht man in der Skizze vom Phasenportrait in \cref{fig:phaseportrait_9.1a}.
+
+    \begin{figure}
+    \centering
+    \includegraphics[width=.5\linewidth]{1a.jpg}
+    \captionof{figure}{Skizze des Phasenportraits von 9.1a), blau: linearisiert, grün: nichtlinear}
+    \label{fig:phaseportrait_9.1a}
+    \end{figure}
+
   \item
+    Mehrskalenansatz:
+    \[ y = \sm \eps^i y_i(t, T), \quad \text{mit } T = \eps t \]
+    \[ \Rightarrow y' = \sm \eps^i \partial_{1} y_i + \eps^{i+1} \partial_2 y_i\]
+    \[ \Rightarrow y'' = \sm \eps^i \partial_{11} y_i + \eps^{i+1} \partial_{12}
+      y_i + \eps^{i+1} \partial_{21} y_i + \eps^{i+2} \partial_{22} y_i\]
+
+    Die DGL für den $\eps^0$ Term ist:
+    \[ \partial_{11} y_0 + y_0 = 0\]
+    Wie in der Vorlesung schreiben wir die allgemeine Lösung dafür als:
+    \[ y_0 = r(T) \cos(t + \varphi(T))\]
+    Die DGL für den $\eps^1$ Term ist:
+    \[\partial_{11} y_1 + y_1 = - (\partial_1 y_0)^3 -2 \partial_{12} y_0\]
+    \[\partial_1 y_0 = r(T) \sin(t+\varphi(T)), \quad (\partial_1 y_0)^3 =
+      r^3(T) \frac{3 \sin(t + \varphi(T)) - \sin(3 (t + \varphi(T))}{4}\]
+    \[\partial_{12} y_0 = r'(T) \sin(t+\varphi(T)) - r(T) \cos(t + \varphi(T)) \varphi'(T) \]
+
+    Daher ist die rechte Seite der $\eps^1$-Gleichung:
+    \[\left(2r'(T) + \frac{3}{4} r^3(T)\right) \sin(t + \varphi(T)) - r(T) \varphi'(T) \cos(t
+     + \varphi(T)) - 2r^3(T) \sin(3(t + \varphi(T))) \]
+
+   Damit $y_1$ kein Wachstum in $t$ hat setzen wir die Terme vor den Lösungen der
+   homogenen Gleichung auf 0.
+   ($\sin(t), \cos(t)$ würden die homogene Gleichung lösen; $\sin(3t)$ nicht).
+   \[ 2r'(T) + \frac{3}{4}r^3(T) = 0, \quad -r(T)\varphi'(T) = 0\]
+   Die erste Gleichung kann mittels Variablenseparation gelöst werden und die
+   \[ r = \frac{1}{\sqrt{\frac{6}{8}T + c_1}}\]
+   Aus der zweiten Gleichungt folgt $\varphi'(T) = 0 \Rightarrow \varphi(T) \equiv c_2$.
+
+   Also
+   \[y_0(t) = \frac{1}{\sqrt{\frac{6}{8}\eps t + c_1}} \cos(t + c_2)\]
+
+   Die Konstanten können aus den Anfangsbedingungen ermittelt werden:
+   \[a = y_0(0) = \frac{1}{\sqrt{c_1}} \cos(c_2) \Rightarrow
+     (c_1)^{-\frac{1}{2}} = \frac{a}{\cos(c_2)}\]
+   \[y'_0(t) = -\frac{3}{8}\eps \left(\frac{6}{8}\eps t +
+       c_1\right)^{-\frac{3}{2}} \cos(t+c_2)- \left(\frac{6}{8}\eps t +
+       c_1\right)^{-\frac{1}{2}} \sin(t + c_2)\]
+   \[0 = y'_0(0) = -\frac{3}{8}\eps \left(c_1\right)^{-\frac{3}{2}} \cos(c_2)
+     - \left(c_1\right)^{-\frac{1}{2}} \sin(c_2)
+   = -\frac{3}{8} \eps \frac{a^3}{\cos^3(c_2)} \cos(c_2) - \frac{a\sin(c_2)}{\cos(c_2)}\]
+ \[-\frac{3}{8} \eps a^2 = \sin(c_2)\cos(c_2) = \frac{1}{2}\sin(2c_2)\]
+ \[c_2 = \frac{1}{2}\arcsin\left(\frac{-3}{8}\eps a^2\right)\]
+
 \end{enumerate}
 
 
