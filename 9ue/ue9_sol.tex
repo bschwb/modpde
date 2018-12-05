@@ -114,7 +114,7 @@
     \[\Rightarrow t'(y) = \frac{1}{\sqrt{-y^2 - \eps \frac{y^4}{2} + a^2 + \eps \frac{a^4}{2}}}\]
 
     Integral der Zeitableitung entlang eines Orbits ergibt die Periodendauer und
-    $t'$ ist gerade ist gerade:
+    $t'$ ist gerade:
     \[T(\eps, a) = \int_a^0 t'(y) \dy + \int_0^{-a} t'(y) \dy + \int_{-a}^0
       t'(y) \dy + \int_0^a t'(y) \dy = 4 \int_0^a t'(y) \dy\]
 
@@ -171,8 +171,8 @@
   Aus der $\eps^1$ Gleichung folgt mit der Identität $\cos^3(\theta) = \frac{3
     \cos(\theta) + \cos(3 \theta)}{4}$:
   \[y_1'' + y_1 = -2 \omega_1 a \cos(t) - a^3 \frac{3 \cos(t) + \cos(3t)}{4}\]
-  Die Rezonanzterme werden unterdrückt so wie in \textbf{9.1a)} mit der gleichen
-  Begründung.
+  Aus \textbf{9.2a)} wissen wir das die Lösungen Orbits und somit beschränkt sind.
+  Deshalb macht es Sinn die Rezonanzterme zu unterdrücken so wie in \textbf{9.1a)}.
   \[-2\omega_1 a - \frac{3}{4} a^3 = 0\]
   \[\Rightarrow \omega_1 = -\frac{3}{8} a^2\]
 
@@ -189,19 +189,30 @@
   \[ \eps^2: y''_2 + (y_0^2-1) y'_1 + y'_0 (y_0^2 \omega_1 - \omega_1 + 2 y_0 y_1)  + y_2 + 2 \omega_1 y_1 + \omega^2_1 y_0 + 2\omega_2 y_0 = 0\]
 
   Aus $\eps^0$ folgt:
-  $y_0 = a \cos(t) + b \sin(t)$.
+  $y_0 = a \cos(\tau)$.
 
+\[2\sin \theta \cos \psi =\sin(\theta + \psi) + \sin(\theta - \psi)\]
   Die Inhomogenität für $\eps^1$ ist:
+\[-(a^2 \cos(\tau)^2 - 1) (-a \sin(\tau)) - 2 \omega_1 a \cos(\tau) \]
+\[= \frac{a^3}{4} \sin(\tau) + \frac{a^3}{4} \sin(3\tau) - a \sin(\tau) - 2\omega_1 a \cos(\tau)\]
+$\Rightarrow \omega_1 = 0$ und $a = 0$ oder $a^2 = 4$.
 
-  \[(a^2 \cos(t)^2  + 2ab \sin(t) \cos(t) + b^2 \sin^2 (t)- 1) (a \sin(t) - b
-    \cos(t)) - \omega_1 (a \cos(t) + b \sin(t)) \]
-  %   \[= \left(a^2 \frac{1
-  %       +\cos(2t)}{2}-1\right)a \sin(t) - \omega_1 a \cos(t)\]
-  % \[=\frac{a^3}{2} \sin(t) + \frac{a^3}{4} (\sin(3t) + \sin(t)) - \omega_1 a
-  %   \cos(t) - a \sin(t)   \]
+Also ist die $\eps^1$ Gleichung:
+\[y''_1 + y_1 = \frac{a^3}{4} \sin(3\tau)\]
 
+Ansatz dafür $y_p = C \sin(3\tau)$
+\[-9 C \sin(3\tau) + C \sin(3\tau) = \pm 2 \sin(3\tau) \Rightarrow C = \mp \frac{1}{4}\]
+\[y_1 = A \sin(\tau) + B \sin(\tau) \mp \frac{1}{4} \sin(3\tau)\]
+\[0 = y_1(0) \Rightarrow B = 0\]
+\[0 = y'_1(0) \Rightarrow -A \pm \frac{3}{4} = 0 \Rightarrow A = \pm \frac{3}{4}\]
+\[y_1 = \pm \frac{3}{4} \sin(\tau) \mp \frac{1}{4} \sin(3\tau)\]
 
-\[2\sin \theta \cos \varphi =\sin(\theta +\varphi )+\sin(\theta -\varphi )\]
+Inhomogenität der $\eps^2$ Gleichung:
+\[(1-4 \cos^2(\tau)) \left(\pm \frac{3}{4} \cos(\tau) \mp \frac{3}{4} \cos(3\tau)\right)
+  + 8 \sin(\tau) \cos(\tau)
+  \left(\pm\frac{3}{4}\sin(\tau)\mp\frac{1}{4}\sin(3\tau)\right) \mp 4 \omega_2 \cos(\tau) \]
+\[=\frac{1}{4} (\mp16 \omega_2 \cos(\tau) \pm \cos(\tau) \mp 6 \cos(3\tau) \pm 5\cos(5\tau))\]
+\[ \Rightarrow \omega_2 = \frac{1}{16}\]
 
 % ==================== 9.5 ====================
 \item \begin{enumerate}
