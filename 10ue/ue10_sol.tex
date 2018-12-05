@@ -10,6 +10,8 @@
 \usepackage{enumitem}
 
 \newcommand*{\eps}{\varepsilon}
+\newcommand*{\Ld}{\mathcal{O}}
+\newcommand*{\Wh}{\widehat{W}}
 
 \setlist[enumerate,2]{label=\textbf{\alph*)}}
 
@@ -18,6 +20,26 @@
 
 % ==================== 10.1 ====================
 \item
+  Wir werden folgende Eigenschaft des Frobenius-Produkts brauchen (wir verwenden
+  hier die Einstein'sche Summenkonvention):
+  \[A : (B C) = A_{ij} (B C)_{ij} = A_{ij} B_{ik} C_{kj}
+    = A_{ij} B^\top_{ki} C_{kj} = B^\top_{ki} A_{ij} C_{kj} = (B^\top A)_{kj} C_{kj}
+    = (B^\top A) : C\]
+  Außerdem gilt $A : B = B : A = A^\top : B^\top $ und aus der Vorlesung wissen
+  wir, dass $\frac{\partial W(C)}{\partial C}$ symmetrisch ist.
+
+  \begin{IEEEeqnarray*}{rCl}
+    \Wh(F + \Delta) &=& W((F + \Delta)^\top(F+\Delta)) = W(F^\top F + F^\top
+    \Delta + F \Delta^\top + \Delta^T \Delta) \\
+    &=& W(F^\top F) + \frac{\partial W(F^\top F)}{\partial C}
+    : (F^\top \Delta + \Delta^\top F + \Delta^T \Delta)
+    + \Ld (\norm{\Delta}^2)\\
+    &=& W(F^\top F) + F \frac{\partial W(F^\top F)}{\partial C} : \Delta +
+    \frac{\partial W(F^\top F)}{\partial C} : (\Delta^T F) + \Ld (\norm{\Delta}^2) \\
+    &=& W(F^\top F) + 2 F \frac{\partial W(F^\top F)}{\partial C} : \Delta
++ \Ld(\norm{\Delta}^2) \\
+  \end{IEEEeqnarray*}
+  \[\Rightarrow \frac{\partial \Wh(F)}{\partial F} = 2 F \frac{\partial W(F^\top F)}{\partial C}\]
 
 % ==================== 10.2 ====================
 \item
