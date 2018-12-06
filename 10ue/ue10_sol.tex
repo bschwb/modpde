@@ -2,6 +2,10 @@
 \usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}
 
+\usepackage[headsepline]{scrlayer-scrpage}
+\ohead{Bernd Schwarzenbacher}
+\ihead{UE10}
+
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{commath}
@@ -12,6 +16,9 @@
 \newcommand*{\eps}{\varepsilon}
 \newcommand*{\Ld}{\mathcal{O}}
 \newcommand*{\Wh}{\widehat{W}}
+\newcommand*{\dx}{\dif{}x}
+\newcommand*{\ds}{\dif{}s_x}
+\DeclareMathOperator*{\divop}{div}
 
 \setlist[enumerate,2]{label=\textbf{\alph*)}}
 
@@ -68,6 +75,25 @@
 
 % ==================== 10.6 ====================
 \item
+  Zuerst mit der Definition von $\eps$, $\tau$ symmetrisch und $A:B=A^\top:B^\top$
+  \[\tau : \eps(v) = \tau : \frac{1}{2} ((\nabla v)^\top + \nabla v) = \tau : \nabla v\]
+
+  Wir wenden partielle Integration auf jede Zeile von $\tau$ an
+  ($\tau_{i,\cdot}$ bezeichnet die i-te Zeile von $\tau$):
+  \[ \int_\Omega v_i \divop \tau_{i,\cdot} \dx = - \int_\Omega
+    \nabla v_i \cdot \tau_{i,\cdot} \dx + \int_{\partial\Omega} v_i
+    (\tau_{i,\cdot} \cdot n) \ds
+  \]
+
+  Nun wird das für jede Zeile gemacht, die Zeilen addiert und man erhält die gewünschte Formel:
+  \begin{IEEEeqnarray*}{rCl}
+    \int_\Omega \tau : \eps(v) \dx &=& \int_\Omega \tau : \nabla v \dx
+    = \sum_{i=1}^3 \int_\Omega \tau_{i,\cdot} \cdot \nabla v_i \dx \\ 
+    &=& -\sum_{i=1}^3 \int_\Omega v_i \cdot \divop \tau_{i,\cdot} \dx
+    + \int_{\partial\Omega} v_i (\tau_{i,\cdot} \cdot n) \ds \\
+    &=& -\int_\Omega v \cdot \divop \tau \dx
+    + \int_{\partial\Omega} v \cdot (\tau \cdot n) \ds \\
+  \end{IEEEeqnarray}
 
 \end{enumerate}
 \end{document}
