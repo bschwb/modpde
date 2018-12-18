@@ -16,9 +16,12 @@
 \newcommand*{\eps}{\varepsilon}
 \newcommand*{\Ld}{\mathcal{O}}
 \newcommand*{\Wh}{\widehat{W}}
+\newcommand*{\Wt}{\tilde{W}}
 \newcommand*{\dx}{\dif{}x}
 \newcommand*{\ds}{\dif{}s_x}
 \DeclareMathOperator*{\divop}{div}
+\DeclareMathOperator*{\tr}{tr}
+
 
 \setlist[enumerate,2]{label=\textbf{\alph*)}}
 
@@ -50,6 +53,37 @@
 
 % ==================== 10.2 ====================
 \item
+  Mit $E = \frac{1}{2}(C - I)$ erhalten wir für $\Wt(E): \Wt(0) = 0$.
+
+  Zunächst wird die Hilfsaussage laut Angabe bewiesen:
+  \begin{IEEEeqnarray*}{rCl}
+    \det(C) &=&
+    \det(I + 2 E) =
+    \det\begin{pmatrix}
+     1 + 2e_{11} &2e_{12} &2e_{13} \\
+     2e_{12} &1+2e_{22} &2e_{23} \\
+     2e_{13} &2e_{23} &1+2e_{33}
+    \end{pmatrix} \\
+    &=& (1+2e_{11}) (1+2e_{22}) (1+2e_{33}) +
+    16 e_{12} e_{23} e_{13} \\
+    &&- (1+2e_{11}) 4 e_{23}^2 - (1+2e_{22}) 4 e_{13}^2
+    - (1+2e_{33}) 4 e_{12}^2 \\
+    &=& 1 + 2 \tr E + 2 (\tr E)^2 - 2 E : E + 8 \det(E)
+  \end{IEEEeqnarray*}
+  Wegen der Symmetrie von $E$ gilt außerdem: $E : E = \tr E^2$.
+  Mit der Taylorentwicklung
+  \[(1 + x)^{-\frac{\beta}{2}} = 1 - \frac{\beta}{2} x +
+    \frac{\beta}{2}\frac{\beta+2}{4} x^2 + \Ld(x^3)\]
+
+  \begin{IEEEeqnarray*}{rCl}
+  \frac{1}{\mu} \Wt(E) &=& \tr E + \frac{1}{\beta}
+    \left\{\det(C)^{-\frac{\beta}{2}} - 1 \right\} \\
+  &=& \tr E - \tr E - (\tr E)^2 + \tr E^2 + \frac{\beta+2}{2} (\tr E)^2
+  + \Ld(E^3) \\
+  &=& \tr E^2 + \frac{\beta}{2} (\tr E)^2
+  + \Ld(E^3)
+  \end{IEEEeqnarray*}
+  Daher sind die Lam\'{e}-Parameter $\mu = \mu, \lambda = \mu\beta$.
 
 % ==================== 10.3 ====================
 \item
@@ -88,12 +122,12 @@
   Nun wird das für jede Zeile gemacht, die Zeilen addiert und man erhält die gewünschte Formel:
   \begin{IEEEeqnarray*}{rCl}
     \int_\Omega \tau : \eps(v) \dx &=& \int_\Omega \tau : \nabla v \dx
-    = \sum_{i=1}^3 \int_\Omega \tau_{i,\cdot} \cdot \nabla v_i \dx \\ 
+    = \sum_{i=1}^3 \int_\Omega \tau_{i,\cdot} \cdot \nabla v_i \dx \\
     &=& -\sum_{i=1}^3 \int_\Omega v_i \cdot \divop \tau_{i,\cdot} \dx
     + \int_{\partial\Omega} v_i (\tau_{i,\cdot} \cdot n) \ds \\
     &=& -\int_\Omega v \cdot \divop \tau \dx
     + \int_{\partial\Omega} v \cdot (\tau \cdot n) \ds \\
-  \end{IEEEeqnarray}
+  \end{IEEEeqnarray*}
 
 \end{enumerate}
 \end{document}
